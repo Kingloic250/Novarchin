@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
+import { RevealWords } from '@/components/RevealWords';
 import { cn } from '@/lib/utils';
 
 interface Project {
@@ -10,49 +11,35 @@ interface Project {
   tags: string[];
   gradient: string;
   accent: string;
-  size: 'lg' | 'md';
 }
 
 const projects: Project[] = [
   {
-    name: 'Vaultline',
-    category: 'Fintech mobile app',
+    name: 'Digital Banking Platform',
+    category: 'FinTech',
     description:
-      'A banking app for freelancers — instant invoicing, multi-currency wallets, and real-time cashflow insights.',
-    tags: ['iOS', 'Android', 'Design System'],
+      'A secure, scalable digital banking solution with multi-currency wallets, instant transfers, and real-time transaction monitoring for an African fintech startup.',
+    tags: ['React', 'Java', 'PostgreSQL', 'AWS'],
     gradient: 'from-wine-700 via-wine-800 to-wine-950',
     accent: 'text-amber-300',
-    size: 'lg',
   },
   {
-    name: 'Pulsewave',
-    category: 'Healthtech dashboard',
+    name: 'Hospital Management System',
+    category: 'HealthTech',
     description:
-      'A clinician-facing analytics platform turning wearable data into actionable care decisions.',
-    tags: ['Web', 'React', 'D3'],
+      'An integrated HMS covering patient records, appointment scheduling, billing, lab integration, and analytics for a network of hospitals across East Africa.',
+    tags: ['Angular', '.NET', 'SQL Server', 'Azure'],
     gradient: 'from-amber-500 via-amber-600 to-wine-700',
     accent: 'text-sand-50',
-    size: 'md',
   },
   {
-    name: 'Greenhouse',
-    category: 'Marketplace web app',
+    name: 'NGO Impact Platform',
+    category: 'Social Impact',
     description:
-      'A B2B marketplace connecting sustainable suppliers with enterprise buyers — search, quotes, contracts.',
-    tags: ['Next.js', 'Stripe', 'Search'],
+      'A donor management and field operations platform enabling real-time impact tracking, fund allocation, and beneficiary management for international NGOs.',
+    tags: ['Vue', 'Python', 'MongoDB', 'GCP'],
     gradient: 'from-wine-600 via-wine-700 to-amber-600',
     accent: 'text-amber-200',
-    size: 'md',
-  },
-  {
-    name: 'Stratos',
-    category: 'Travel companion app',
-    description:
-      'An offline-first travel planner with AI itineraries, shared trips, and live flight tracking.',
-    tags: ['Flutter', 'AI', 'Offline'],
-    gradient: 'from-ink via-wine-900 to-wine-800',
-    accent: 'text-amber-300',
-    size: 'lg',
   },
 ];
 
@@ -61,10 +48,7 @@ function ProjectCard({ project }: { project: Project }) {
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-      className={cn(
-        'group relative overflow-hidden rounded-4xl border border-sand-300 shadow-card',
-        project.size === 'lg' ? 'lg:col-span-7' : 'lg:col-span-5',
-      )}
+      className="group relative overflow-hidden rounded-4xl border border-sand-300 shadow-card"
     >
       <div
         className={cn(
@@ -72,7 +56,6 @@ function ProjectCard({ project }: { project: Project }) {
           project.gradient,
         )}
       >
-        {/* Decorative grid */}
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -81,7 +64,6 @@ function ProjectCard({ project }: { project: Project }) {
             backgroundSize: '32px 32px',
           }}
         />
-        {/* Floating mock UI */}
         <div className="absolute inset-0 grid place-items-center">
           <div className="relative h-[58%] w-[72%] rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-[1.04]">
             <div className="flex items-center gap-1.5 border-b border-white/15 px-4 py-3">
@@ -98,7 +80,6 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        {/* Hover overlay */}
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/70 via-ink/10 to-transparent p-7 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
           <p className={cn('max-w-md text-sm leading-relaxed', project.accent)}>
             {project.description}
@@ -133,40 +114,26 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-export function Work() {
+export function CaseStudies() {
   return (
     <section id="work" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionReveal className="mb-14 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <div className="max-w-2xl">
-            <RevealItem>
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
-                Selected work
-              </span>
-            </RevealItem>
-            <RevealItem>
-              <h2 className="mt-4 font-display text-display font-bold text-ink">
-                Products we're <span className="text-gradient">proud</span> to have shipped.
-              </h2>
-            </RevealItem>
-          </div>
+        <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-wine-700"
-            >
-              Start your case study
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+              Case Studies
+            </span>
           </RevealItem>
+          <RevealWords
+            text="Real solutions delivering real impact across Africa."
+            as="h2"
+            className="mt-4 font-display text-display font-bold text-gradient"
+          />
         </SectionReveal>
 
-        <SectionReveal className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <SectionReveal className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {projects.map((p) => (
-            <RevealItem
-              key={p.name}
-              className={p.size === 'lg' ? 'lg:col-span-7' : 'lg:col-span-5'}
-            >
+            <RevealItem key={p.name}>
               <ProjectCard project={p} />
             </RevealItem>
           ))}

@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Dribbble, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Linkedin, Twitter, Github, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const columns = [
   {
-    title: 'Studio',
+    title: 'Company',
     links: [
-      { label: 'Services', href: '#services' },
-      { label: 'Work', href: '#work' },
       { label: 'About', href: '#about' },
+      { label: 'Services', href: '#services' },
+      { label: 'Case Studies', href: '#work' },
       { label: 'Contact', href: '#contact' },
     ],
   },
   {
     title: 'Services',
     links: [
-      { label: 'Mobile Apps', href: '#services' },
-      { label: 'Web Apps', href: '#services' },
-      { label: 'UI/UX Design', href: '#services' },
-      { label: 'Product Strategy', href: '#services' },
+      { label: 'Custom Software', href: '#services' },
+      { label: 'AI & Automation', href: '#services' },
+      { label: 'Cloud & DevOps', href: '#services' },
+      { label: 'Cybersecurity', href: '#services' },
     ],
   },
   {
@@ -26,17 +26,16 @@ const columns = [
     links: [
       { label: 'hello@novarchin.studio', href: 'mailto:hello@novarchin.studio' },
       { label: 'LinkedIn', href: '#' },
-      { label: 'Dribbble', href: '#' },
+      { label: 'Twitter', href: '#' },
       { label: 'GitHub', href: '#' },
     ],
   },
 ];
 
 const socials = [
-  { icon: <Twitter className="h-4 w-4" />, label: 'Twitter' },
   { icon: <Linkedin className="h-4 w-4" />, label: 'LinkedIn' },
+  { icon: <Twitter className="h-4 w-4" />, label: 'Twitter' },
   { icon: <Github className="h-4 w-4" />, label: 'GitHub' },
-  { icon: <Dribbble className="h-4 w-4" />, label: 'Dribbble' },
 ];
 
 export function Footer() {
@@ -74,8 +73,8 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
-              A product studio building mobile and web apps that move fast and feel
-              effortless. We turn ideas into products people actually want to use.
+              Engineering Africa's digital future through enterprise software, AI,
+              cloud infrastructure, and transformative digital solutions.
             </p>
 
             <form onSubmit={subscribe} className="mt-6 max-w-sm">
@@ -143,7 +142,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-6 border-t border-sand-300 pt-8 sm:flex-row">
           <p className="text-xs text-ink-muted">
-            © {new Date().getFullYear()} Novarchin Studio. All rights reserved.
+            © {new Date().getFullYear()} Novarchin. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             {socials.map((s) => (

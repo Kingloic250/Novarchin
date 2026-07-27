@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
+import { RevealWords } from '@/components/RevealWords';
 import { cn } from '@/lib/utils';
 
 const schema = z.object({
@@ -17,10 +18,14 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const projectTypes = [
-  'Mobile App',
-  'Web App',
-  'UI/UX Design',
-  'Product Strategy',
+  'Custom Software',
+  'Enterprise Systems',
+  'Web & Mobile App',
+  'AI & Automation',
+  'FinTech',
+  'Cloud & DevOps',
+  'Cybersecurity',
+  'Consulting',
   'Other',
 ];
 
@@ -73,7 +78,7 @@ export function ContactForm() {
     reset,
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
-  const onSubmit = async (_values: FormValues) => {
+  const onSubmit = async () => {
     await new Promise((r) => setTimeout(r, 1100));
     setSubmitted(true);
     reset();
@@ -90,15 +95,15 @@ export function ContactForm() {
                 Contact
               </span>
             </RevealItem>
-            <RevealItem>
-              <h2 className="mt-4 font-display text-display font-bold text-ink">
-                Let's talk about your <span className="text-gradient">project</span>.
-              </h2>
-            </RevealItem>
+            <RevealWords
+              text="Let's talk about your project."
+              as="h2"
+              className="mt-4 font-display text-display font-bold text-gradient"
+            />
             <RevealItem>
               <p className="mt-5 text-lg text-ink-muted">
-                Whether you have a fully spec'd product or a back-of-napkin idea, we'd
-                love to hear it. Expect a reply within one business day.
+                Ready to build something transformative? Tell us about your project,
+                and our team will respond within one business day.
               </p>
             </RevealItem>
 
@@ -131,7 +136,7 @@ export function ContactForm() {
                   </span>
                   <div>
                     <div className="text-xs text-ink-muted">Studio</div>
-                    <div className="font-medium">Remote · San Francisco · Berlin</div>
+                    <div className="font-medium">Remote · Kigali · Nairobi</div>
                   </div>
                 </div>
               </div>
@@ -234,7 +239,7 @@ export function ContactForm() {
                         <textarea
                           id="message"
                           rows={5}
-                          placeholder="Tell us about your product, timeline, and goals…"
+                          placeholder="Tell us about your project, timeline, and requirements…"
                           className={cn(inputClass, 'resize-none', errors.message && 'border-wine-600 bg-wine-50/40')}
                           {...register('message')}
                         />

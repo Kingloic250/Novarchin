@@ -1,50 +1,71 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { type ReactNode, useRef } from 'react';
-import { ArrowUpRight, Smartphone, Monitor, Palette, Compass } from 'lucide-react';
+import {
+  Code2, Monitor, Smartphone, Cpu, Banknote, Cloud, Workflow,
+  Palette, Shield, Compass,
+} from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
-import { cn } from '@/lib/utils';
-
-interface Service {
+import { RevealWords } from '@/components/RevealWords';
+interface ServiceItem {
   icon: ReactNode;
   title: string;
   description: string;
-  tags: string[];
-  span?: boolean;
 }
 
-const services: Service[] = [
+const services: ServiceItem[] = [
   {
-    icon: <Smartphone className="h-6 w-6" />,
-    title: 'Mobile App Development',
-    description:
-      'Native iOS, Android, and cross-platform apps built with Swift, Kotlin, and Flutter — fast, fluid, and ready for the App Store.',
-    tags: ['Swift', 'Kotlin', 'Flutter', 'React Native'],
-    span: true,
+    icon: <Code2 className="h-6 w-6" />,
+    title: 'Custom Software Development',
+    description: 'Tailored enterprise applications designed to solve your unique business challenges with clean, scalable code.',
   },
   {
     icon: <Monitor className="h-6 w-6" />,
-    title: 'Web App Development',
-    description:
-      'Production web apps with React, Next.js, and TypeScript — scalable architectures and pixel-perfect interfaces.',
-    tags: ['React', 'Next.js', 'TypeScript'],
+    title: 'Enterprise Systems',
+    description: 'Robust ERP, CRM, and business process automation systems built for organizations at scale.',
+  },
+  {
+    icon: <Smartphone className="h-6 w-6" />,
+    title: 'Web & Mobile Applications',
+    description: 'Cross-platform and native apps with intuitive interfaces and performance-first architecture.',
+  },
+  {
+    icon: <Cpu className="h-6 w-6" />,
+    title: 'AI & Automation',
+    description: 'Intelligent automation, machine learning models, and AI-powered tools to transform your operations.',
+  },
+  {
+    icon: <Banknote className="h-6 w-6" />,
+    title: 'FinTech Solutions',
+    description: 'Secure, compliant financial platforms including payment gateways, digital wallets, and banking systems.',
+  },
+  {
+    icon: <Cloud className="h-6 w-6" />,
+    title: 'Cloud & DevOps',
+    description: 'Cloud-native architecture, CI/CD pipelines, and infrastructure automation for reliable deployments.',
+  },
+  {
+    icon: <Workflow className="h-6 w-6" />,
+    title: 'API Development',
+    description: 'RESTful and GraphQL APIs designed for performance, security, and seamless third-party integration.',
   },
   {
     icon: <Palette className="h-6 w-6" />,
     title: 'UI/UX Design',
-    description:
-      'Design systems and interfaces that feel obvious in the best way — research-led, prototype-driven, accessible.',
-    tags: ['Figma', 'Design Systems', 'Prototyping'],
+    description: 'Human-centered design, accessibility-first interfaces, and design systems built for consistency.',
+  },
+  {
+    icon: <Shield className="h-6 w-6" />,
+    title: 'Cybersecurity',
+    description: 'Threat assessment, security audits, penetration testing, and compliance-driven security architecture.',
   },
   {
     icon: <Compass className="h-6 w-6" />,
-    title: 'Product Strategy',
-    description:
-      'From zero to roadmap — we help shape the product, validate the bet, and ship the MVP that proves it.',
-    tags: ['Discovery', 'Roadmaps', 'MVP'],
+    title: 'Technology Consulting',
+    description: 'Strategic technology advisory, architecture reviews, and digital roadmap planning for leadership teams.',
   },
 ];
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({ service }: { service: ServiceItem }) {
   const ref = useRef<HTMLDivElement>(null);
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
@@ -71,34 +92,18 @@ function ServiceCard({ service }: { service: Service }) {
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      className={cn(
-        'group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift',
-        service.span && 'sm:col-span-2',
-      )}
+      className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift"
     >
       <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-wine-600/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      <div className="relative flex items-start justify-between">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow transition-transform duration-300 group-hover:scale-110">
-          {service.icon}
-        </span>
-        <ArrowUpRight className="h-5 w-5 text-ink-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-wine-700" />
-      </div>
-      <h3 className="relative mt-6 font-display text-2xl font-semibold text-ink">
+      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow transition-transform duration-300 group-hover:scale-110">
+        {service.icon}
+      </span>
+      <h3 className="relative mt-5 font-display text-xl font-semibold text-ink">
         {service.title}
       </h3>
-      <p className="relative mt-3 text-sm leading-relaxed text-ink-muted">
+      <p className="relative mt-2 text-sm leading-relaxed text-ink-muted">
         {service.description}
       </p>
-      <div className="relative mt-5 flex flex-wrap gap-2">
-        {service.tags.map((t) => (
-          <span
-            key={t}
-            className="rounded-full border border-sand-300 bg-sand-100 px-2.5 py-1 text-xs font-medium text-ink-soft"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
     </motion.div>
   );
 }
@@ -110,26 +115,25 @@ export function Services() {
         <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
-              What we do
+              Our Services
             </span>
           </RevealItem>
-          <RevealItem>
-            <h2 className="mt-4 font-display text-display font-bold text-ink">
-              Four disciplines, one <span className="text-gradient">obsession</span> —
-              shipping products that feel right.
-            </h2>
-          </RevealItem>
+          <RevealWords
+            text="End-to-end digital solutions for enterprises across Africa."
+            as="h2"
+            className="mt-4 font-display text-display font-bold text-gradient"
+          />
           <RevealItem>
             <p className="mt-5 text-lg text-ink-muted">
-              We blend strategy, design, and engineering into a single workflow so your
-              product moves from idea to launch without the seams showing.
+              From strategy to deployment, we deliver full-stack technology services
+              that move organizations forward.
             </p>
           </RevealItem>
         </SectionReveal>
 
         <SectionReveal className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <RevealItem key={s.title} className={s.span ? 'sm:col-span-2 lg:col-span-1' : ''}>
+            <RevealItem key={s.title}>
               <ServiceCard service={s} />
             </RevealItem>
           ))}

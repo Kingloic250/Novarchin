@@ -1,60 +1,75 @@
 import { motion } from 'framer-motion';
-import { type ReactNode } from 'react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
+import { RevealWords } from '@/components/RevealWords';
 
-interface Tech {
-  name: string;
-  icon: ReactNode;
-}
-
-const techs: Tech[] = [
-  { name: 'React', icon: <span className="font-display text-2xl font-bold">R</span> },
-  { name: 'Swift', icon: <span className="font-display text-2xl font-bold">S</span> },
-  { name: 'Kotlin', icon: <span className="font-display text-2xl font-bold">K</span> },
-  { name: 'Flutter', icon: <span className="font-display text-2xl font-bold">F</span> },
-  { name: 'Node.js', icon: <span className="font-display text-2xl font-bold">N</span> },
-  { name: 'TypeScript', icon: <span className="font-display text-2xl font-bold">TS</span> },
-  { name: 'Next.js', icon: <span className="font-display text-2xl font-bold">N</span> },
-  { name: 'AWS', icon: <span className="font-display text-2xl font-bold">A</span> },
-  { name: 'Figma', icon: <span className="font-display text-2xl font-bold">F</span> },
-  { name: 'Postgres', icon: <span className="font-display text-2xl font-bold">P</span> },
-  { name: 'GraphQL', icon: <span className="font-display text-2xl font-bold">GQ</span> },
-  { name: 'Docker', icon: <span className="font-display text-2xl font-bold">D</span> },
+const categories = [
+  {
+    label: 'Frontend',
+    techs: ['React', 'Angular', 'Vue', 'Flutter'],
+  },
+  {
+    label: 'Backend',
+    techs: ['Java', 'Spring Boot', 'Node.js', '.NET', 'Python'],
+  },
+  {
+    label: 'Databases',
+    techs: ['PostgreSQL', 'SQL Server', 'MongoDB'],
+  },
+  {
+    label: 'Cloud',
+    techs: ['AWS', 'Azure', 'Google Cloud'],
+  },
+  {
+    label: 'AI',
+    techs: ['OpenAI', 'TensorFlow', 'LangChain'],
+  },
+  {
+    label: 'DevOps',
+    techs: ['Docker', 'Kubernetes'],
+  },
 ];
 
 export function TechGrid() {
   return (
-    <section className="relative py-24 sm:py-28">
+    <section id="stack" className="relative py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionReveal className="mb-12 max-w-2xl">
+        <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
-              Capabilities
+              Technology Stack
             </span>
           </RevealItem>
-          <RevealItem>
-            <h2 className="mt-4 font-display text-display font-bold text-ink">
-              The tools we <span className="text-gradient">reach for</span>.
-            </h2>
-          </RevealItem>
+          <RevealWords
+            text="Modern tools. Proven platforms. Enterprise grade."
+            as="h2"
+            className="mt-4 font-display text-display font-bold text-gradient"
+          />
         </SectionReveal>
 
-        <SectionReveal className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
-          {techs.map((t) => (
-            <RevealItem key={t.name}>
-              <motion.div
-                whileHover={{ y: -4, scale: 1.03 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="group flex aspect-square flex-col items-center justify-center gap-3 rounded-3xl border border-sand-300 bg-sand-50/70 shadow-soft transition-colors hover:border-wine-600/40 hover:bg-sand-50"
-              >
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow transition-transform group-hover:scale-110">
-                  {t.icon}
-                </span>
-                <span className="text-xs font-medium text-ink-soft">{t.name}</span>
-              </motion.div>
-            </RevealItem>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((cat) => (
+            <SectionReveal key={cat.label}>
+              <RevealItem>
+                <div className="rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-soft">
+                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+                    {cat.label}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {cat.techs.map((t) => (
+                      <motion.span
+                        key={t}
+                        whileHover={{ y: -2, scale: 1.04 }}
+                        className="rounded-full border border-sand-300 bg-sand-100 px-3.5 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-wine-600/40 hover:bg-sand-50"
+                      >
+                        {t}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              </RevealItem>
+            </SectionReveal>
           ))}
-        </SectionReveal>
+        </div>
       </div>
     </section>
   );

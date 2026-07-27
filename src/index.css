@@ -11,7 +11,6 @@
   --border: #ededec;
   --wine: #7a1f2b;
   --wine-deep: #6b1220;
-  --amber: #ed b241;
   --amber: #edb241;
 }
 
@@ -114,13 +113,6 @@ body {
 .marquee-mask {
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-
-/* Hide default cursor on desktop when custom cursor active */
-@media (hover: hover) and (pointer: fine) {
-  .custom-cursor-active * {
-    cursor: none !important;
-  }
 }
 
 /* Reduced motion */
