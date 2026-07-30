@@ -43,17 +43,7 @@ export function PageReveal() {
             transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center gap-3"
           >
-            <span className="grid h-12 w-12 place-items-center rounded-xl bg-wine-600 shadow-glow">
-              <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" aria-hidden="true">
-                <path
-                  d="M8 24V8l8 10 8-10v16"
-                  stroke="#EDB241"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
+            <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-12 w-12" />
             <span className="font-display text-3xl font-bold tracking-tight text-sand-50">
               Novarchin
             </span>

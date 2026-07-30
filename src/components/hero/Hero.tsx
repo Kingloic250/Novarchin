@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
 import { RevealWords } from '@/components/RevealWords';
@@ -13,6 +14,7 @@ const item = {
 };
 
 export function Hero() {
+  const navigate = useNavigate();
   return (
     <section id="home" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
       <div className="pointer-events-none absolute inset-0 -z-10 mesh-bg opacity-80" />
@@ -58,7 +60,7 @@ export function Hero() {
           <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
             <MagneticButton
               className="group inline-flex items-center gap-2 rounded-full bg-wine-700 px-7 py-3.5 text-sm font-medium text-sand-50 shadow-lift transition-all hover:bg-wine-800"
-              onClick={() => (window.location.hash = '#contact')}
+              onClick={() => navigate('/contact')}
             >
               Start a Project
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -67,7 +69,7 @@ export function Hero() {
             <MagneticButton
               strength={0.25}
               className="group inline-flex items-center gap-2 rounded-full border border-sand-400 bg-sand-50/60 px-7 py-3.5 text-sm font-medium text-ink transition-all hover:border-wine-600/40 hover:bg-sand-50"
-              onClick={() => (window.location.hash = '#services')}
+              onClick={() => navigate('/services')}
             >
               Explore Services
             </MagneticButton>
@@ -78,17 +80,17 @@ export function Hero() {
             className="mt-12 flex items-center gap-8 text-sm text-ink-muted"
           >
             <div>
-              <div className="font-display text-2xl font-bold text-ink">120+</div>
+              <div className="font-display text-2xl font-bold text-ink">30+</div>
               <div className="text-xs">Solutions delivered</div>
             </div>
             <div className="h-8 w-px bg-sand-300" />
             <div>
-              <div className="font-display text-2xl font-bold text-ink">9 yrs</div>
+              <div className="font-display text-2xl font-bold text-ink">4 yrs</div>
               <div className="text-xs">In the craft</div>
             </div>
             <div className="h-8 w-px bg-sand-300" />
             <div>
-              <div className="font-display text-2xl font-bold text-ink">40+</div>
+              <div className="font-display text-2xl font-bold text-ink">20+</div>
               <div className="text-xs">Clients worldwide</div>
             </div>
           </motion.div>

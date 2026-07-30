@@ -20,17 +20,7 @@ function isActive(pathname: string, to: string) {
 function Logo() {
   return (
     <Link to="/" className="group flex items-center gap-2.5" aria-label="Novarchin home">
-      <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-wine-600 shadow-glow transition-transform duration-300 group-hover:scale-105">
-        <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none" aria-hidden="true">
-          <path
-            d="M8 24V8l8 10 8-10v16"
-            stroke="#EDB241"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
+      <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-24 w-24" />
       <span className="font-display text-xl font-bold tracking-tight text-ink">
         Novarchin
       </span>
