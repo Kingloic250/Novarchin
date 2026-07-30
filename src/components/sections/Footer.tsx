@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Linkedin, Twitter, Github, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const columns = [
   {
@@ -26,17 +26,8 @@ const columns = [
     title: 'Connect',
     links: [
       { label: 'hello@novarchin.studio', href: 'mailto:hello@novarchin.studio' },
-      { label: 'LinkedIn', href: '#' },
-      { label: 'Twitter', href: '#' },
-      { label: 'GitHub', href: '#' },
     ],
   },
-];
-
-const socials = [
-  { icon: <Linkedin className="h-4 w-4" />, label: 'LinkedIn' },
-  { icon: <Twitter className="h-4 w-4" />, label: 'Twitter' },
-  { icon: <Github className="h-4 w-4" />, label: 'GitHub' },
 ];
 
 export function Footer() {
@@ -155,18 +146,6 @@ export function Footer() {
           <p className="text-xs text-ink-muted">
             &copy; {new Date().getFullYear()} Novarchin. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href="#"
-                aria-label={s.label}
-                className="grid h-9 w-9 place-items-center rounded-xl border border-sand-300 bg-sand-50 text-ink-soft transition-all hover:border-wine-700 hover:bg-wine-700 hover:text-amber-300"
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
