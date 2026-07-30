@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#work' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Work', to: '/work' },
+  { label: 'Contact', to: '/contact' },
 ];
+
+function isActive(pathname: string, to: string) {
+  if (to === '/') return pathname === '/';
+  return pathname.startsWith(to);
+}
 
 function Logo() {
   return (
-    <a href="#home" className="group flex items-center gap-2.5" aria-label="Novarchin home">
+    <Link to="/" className="group flex items-center gap-2.5" aria-label="Novarchin home">
       <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-wine-600 shadow-glow transition-transform duration-300 group-hover:scale-105">
         <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none" aria-hidden="true">
           <path
@@ -28,38 +34,24 @@ function Logo() {
       <span className="font-display text-xl font-bold tracking-tight text-ink">
         Novarchin
       </span>
-    </a>
+    </Link>
   );
 }
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState('#home');
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    const ids = ['home', 'about', 'services', 'work', 'contact'];
-    const observers: IntersectionObserver[] = [];
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(`#${id}`);
-        },
-        { rootMargin: '-40% 0px -55% 0px' },
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   useEffect(() => {
@@ -82,33 +74,33 @@ export function Navbar() {
 
           <div className="hidden items-center gap-1 md:flex">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+              <Link
+                key={l.to}
+                to={l.to}
                 className={cn(
                   'relative px-4 py-2 text-sm font-medium transition-colors',
-                  active === l.href ? 'text-wine-700' : 'text-ink-soft hover:text-wine-700',
+                  isActive(pathname, l.to) ? 'text-wine-700' : 'text-ink-soft hover:text-wine-700',
                 )}
               >
                 {l.label}
                 <span
                   className={cn(
                     'absolute left-4 right-4 -bottom-0.5 h-px bg-wine-600 transition-transform duration-300',
-                    active === l.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                    isActive(pathname, l.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
                   )}
                 />
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden md:block">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-sand-50 transition-all hover:bg-wine-700 hover:shadow-glow"
             >
               Start a Project
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -164,33 +156,33 @@ export function Navbar() {
             >
               <div className="flex flex-col gap-1">
                 {links.map((l, i) => (
-                  <motion.a
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
+                  <motion.div
+                    key={l.to}
                     initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.1 + i * 0.06, duration: 0.35 }}
-                    className={cn(
-                      'border-b border-sand-300 py-5 font-display text-3xl font-semibold transition-colors',
-                      active === l.href ? 'text-wine-700' : 'text-ink hover:text-wine-700',
-                    )}
                   >
-                    {l.label}
-                  </motion.a>
+                    <Link
+                      to={l.to}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        'block border-b border-sand-300 py-5 font-display text-3xl font-semibold transition-colors',
+                        isActive(pathname, l.to) ? 'text-wine-700' : 'text-ink hover:text-wine-700',
+                      )}
+                    >
+                      {l.label}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
-              <motion.a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={() => setOpen(false)}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.35 }}
                 className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-wine-700 px-6 py-4 text-base font-medium text-sand-50"
               >
                 Start a Project
                 <ArrowUpRight className="h-5 w-5" />
-              </motion.a>
+              </Link>
             </motion.div>
           </motion.div>
         )}

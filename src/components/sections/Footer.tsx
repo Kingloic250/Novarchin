@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Linkedin, Twitter, Github, ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -6,19 +7,19 @@ const columns = [
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '#about' },
-      { label: 'Services', href: '#services' },
-      { label: 'Case Studies', href: '#work' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'About', to: '/about' },
+      { label: 'Services', to: '/services' },
+      { label: 'Case Studies', to: '/work' },
+      { label: 'Contact', to: '/contact' },
     ],
   },
   {
     title: 'Services',
     links: [
-      { label: 'Custom Software', href: '#services' },
-      { label: 'AI & Automation', href: '#services' },
-      { label: 'Cloud & DevOps', href: '#services' },
-      { label: 'Cybersecurity', href: '#services' },
+      { label: 'Custom Software', to: '/services' },
+      { label: 'AI & Automation', to: '/services' },
+      { label: 'Cloud & DevOps', to: '/services' },
+      { label: 'Cybersecurity', to: '/services' },
     ],
   },
   {
@@ -54,9 +55,8 @@ export function Footer() {
     <footer className="relative border-t border-sand-300 bg-sand-100/60">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          {/* Brand + newsletter */}
           <div className="lg:col-span-5">
-            <a href="#home" className="group flex items-center gap-2.5" aria-label="Novarchin home">
+            <Link to="/" className="group flex items-center gap-2.5" aria-label="Novarchin home">
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-wine-600 shadow-glow transition-transform group-hover:scale-105">
                 <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none" aria-hidden="true">
                   <path
@@ -71,7 +71,7 @@ export function Footer() {
               <span className="font-display text-xl font-bold tracking-tight text-ink">
                 Novarchin
               </span>
-            </a>
+            </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
               Engineering Africa's digital future through enterprise software, AI,
               cloud infrastructure, and transformative digital solutions.
@@ -113,7 +113,6 @@ export function Footer() {
             </form>
           </div>
 
-          {/* Link columns */}
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
             {columns.map((col) => (
               <div key={col.title}>
@@ -123,15 +122,27 @@ export function Footer() {
                 <ul className="mt-4 space-y-3">
                   {col.links.map((l) => (
                     <li key={l.label}>
-                      <a
-                        href={l.href}
-                        className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-wine-700"
-                      >
-                        <span className="relative">
-                          {l.label}
-                          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-wine-700 transition-all duration-300 group-hover:w-full" />
-                        </span>
-                      </a>
+                      {'to' in l ? (
+                        <Link
+                          to={l.to}
+                          className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-wine-700"
+                        >
+                          <span className="relative">
+                            {l.label}
+                            <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-wine-700 transition-all duration-300 group-hover:w-full" />
+                          </span>
+                        </Link>
+                      ) : (
+                        <a
+                          href={l.href ?? '#'}
+                          className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-wine-700"
+                        >
+                          <span className="relative">
+                            {l.label}
+                            <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-wine-700 transition-all duration-300 group-hover:w-full" />
+                          </span>
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -142,7 +153,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-6 border-t border-sand-300 pt-8 sm:flex-row">
           <p className="text-xs text-ink-muted">
-            © {new Date().getFullYear()} Novarchin. All rights reserved.
+            &copy; {new Date().getFullYear()} Novarchin. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             {socials.map((s) => (

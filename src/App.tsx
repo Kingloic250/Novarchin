@@ -1,45 +1,24 @@
-import { Navbar } from '@/components/Navbar';
-import { BackToTop } from '@/components/BackToTop';
-import { ScrollProgress } from '@/components/ScrollProgress';
-import { PageReveal } from '@/components/PageReveal';
-import { Hero } from '@/components/hero/Hero';
-import { Clients } from '@/components/sections/Clients';
-import { Stats } from '@/components/sections/Stats';
-import { About } from '@/components/sections/About';
-import { CoreValues } from '@/components/sections/CoreValues';
-import { Services } from '@/components/sections/Services';
-import { Process } from '@/components/sections/Process';
-import { Industries } from '@/components/sections/Industries';
-import { WhyUs } from '@/components/sections/WhyUs';
-import { CaseStudies } from '@/components/sections/CaseStudies';
-import { Leadership } from '@/components/sections/Leadership';
-import { CSR } from '@/components/sections/CSR';
-import { ContactForm } from '@/components/sections/ContactForm';
-import { Footer } from '@/components/sections/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RootLayout } from '@/pages/RootLayout';
+import { HomePage } from '@/pages/HomePage';
+import { AboutPage } from '@/pages/AboutPage';
+import { ServicesPage } from '@/pages/ServicesPage';
+import { WorkPage } from '@/pages/WorkPage';
+import { ContactPage } from '@/pages/ContactPage';
 
 export default function App() {
   return (
-    <div className="grain-overlay relative min-h-screen bg-sand-100 text-ink">
-      <PageReveal />
-      <ScrollProgress />
-      <Navbar />
-      <BackToTop />
-      <main>
-        <Hero />
-        <Clients />
-        <Stats />
-        <About />
-        <CoreValues />
-        <Services />
-        <Process />
-        <Industries />
-        <WhyUs />
-        <CaseStudies />
-        <Leadership />
-        <CSR />
-        <ContactForm />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="work" element={<WorkPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
