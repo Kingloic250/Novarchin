@@ -1,21 +1,22 @@
+import { Eye, Rocket, Heart } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
 
 const visionData = [
   {
+    icon: <Eye className="h-6 w-6" />,
     title: 'Our Vision',
     text: "Become Africa's leading technology innovation company.",
-    gradient: 'text-gradient',
   },
   {
+    icon: <Rocket className="h-6 w-6" />,
     title: 'Our Mission',
     text: 'Design and deliver world-class digital products that empower organizations to innovate, automate and grow.',
-    gradient: 'text-gradient',
   },
   {
+    icon: <Heart className="h-6 w-6" />,
     title: 'Our Purpose',
     text: "Accelerate Africa's digital transformation.",
-    gradient: 'text-gradient-amber',
   },
 ];
 
@@ -30,7 +31,7 @@ export function About() {
             </span>
           </RevealItem>
           <RevealWords
-            text="We are an emerging technology company focused on delivering secure, scalable, and innovative digital solutions for businesses, governments, NGOs and enterprises across Africa."
+            text="Secure, scalable, innovative digital solutions for Africa."
             as="h2"
             className="mt-4 font-display text-display font-bold text-ink"
           />
@@ -47,12 +48,17 @@ export function About() {
             <SectionReveal key={v.title} className="relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50/70 p-8 shadow-soft">
               <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-wine-600/8 blur-3xl" />
               <RevealItem>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow">
+                  {v.icon}
+                </span>
+              </RevealItem>
+              <RevealItem>
+                <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
                   {v.title}
                 </p>
               </RevealItem>
               <RevealItem>
-                <p className={`mt-3 font-display text-xl font-semibold ${v.gradient}`}>
+                <p className="mt-2 font-display text-xl font-semibold text-ink">
                   {v.text}
                 </p>
               </RevealItem>

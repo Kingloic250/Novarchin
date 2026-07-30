@@ -5,7 +5,6 @@ import { Hero } from '@/components/hero/Hero';
 import { About } from '@/components/sections/About';
 import { CoreValues } from '@/components/sections/CoreValues';
 import { Services } from '@/components/sections/Services';
-import { TechGrid } from '@/components/sections/TechGrid';
 import { Process } from '@/components/sections/Process';
 import { Industries } from '@/components/sections/Industries';
 import { WhyUs } from '@/components/sections/WhyUs';
@@ -26,7 +25,6 @@ export default function App() {
         <About />
         <CoreValues />
         <Services />
-        <TechGrid />
         <Process />
         <Industries />
         <WhyUs />

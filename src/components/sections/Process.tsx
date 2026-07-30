@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Search, ClipboardList, PenTool, Code2, CheckCircle2, Rocket, HeadphonesIcon } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
@@ -59,46 +58,42 @@ export function Process() {
             </span>
           </RevealItem>
           <RevealWords
-            text="From concept to continuous support — a proven delivery framework."
+            text="Software Development Lifecycle"
             as="h2"
             className="mt-4 font-display text-display font-bold text-gradient"
           />
+          <RevealItem>
+            <p className="mt-5 text-lg text-ink-muted">
+              From concept to continuous support — a proven delivery framework.
+            </p>
+          </RevealItem>
         </SectionReveal>
 
-        <div className="relative">
-          <div className="pointer-events-none absolute left-0 right-0 top-[2.75rem] hidden h-px lg:block">
-            <motion.div
-              className="h-full origin-left bg-gradient-to-r from-wine-700 via-wine-600 to-amber-500"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-
-          <SectionReveal className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <SectionReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {steps.map((s) => (
               <RevealItem key={s.n}>
-                <div className="relative">
-                  <div className="relative z-10 mb-6 grid h-22 w-22 place-items-center rounded-2xl border border-sand-300 bg-sand-50 p-5 shadow-soft">
-                    <span className="grid h-12 w-12 place-items-center rounded-xl bg-wine-700 text-amber-300">
+                <div className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift">
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-wine-600/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="relative flex items-start gap-4">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow transition-transform duration-300 group-hover:scale-110">
                       {s.icon}
                     </span>
+                    <div>
+                      <span className="font-display text-xs font-semibold text-wine-700/40">
+                        {s.n}
+                      </span>
+                      <h3 className="font-display text-lg font-semibold text-ink">
+                        {s.title}
+                      </h3>
+                    </div>
                   </div>
-                  <span className="absolute left-0 top-0 font-display text-sm font-semibold text-wine-700/40">
-                    {s.n}
-                  </span>
-                  <h3 className="font-display text-xl font-semibold text-ink">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  <p className="relative mt-4 text-sm leading-relaxed text-ink-muted">
                     {s.description}
                   </p>
                 </div>
               </RevealItem>
             ))}
           </SectionReveal>
-        </div>
       </div>
     </section>
   );
