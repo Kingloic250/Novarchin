@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { Briefcase, Cpu, HardDrive, UserCog, LineChart } from 'lucide-react';
+import { Briefcase, Cpu, HardDrive } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
 
@@ -22,30 +22,16 @@ const team: Member[] = [
   {
     icon: <Cpu className="h-6 w-6" />,
     role: 'Chief Technology Officer',
-    name: 'CTO',
-    initials: 'CT',
+    name: 'Gisagara Ganza Brian',
+    initials: 'GB',
     accent: 'bg-amber-500 text-wine-800',
   },
   {
     icon: <HardDrive className="h-6 w-6" />,
     role: 'Head of Engineering',
-    name: 'Head of Engineering',
-    initials: 'HE',
+    name: 'Rudahigwa Mparabanyi Loic',
+    initials: 'RL',
     accent: 'bg-ink text-amber-300',
-  },
-  {
-    icon: <UserCog className="h-6 w-6" />,
-    role: 'Operations Manager',
-    name: 'Operations Manager',
-    initials: 'OM',
-    accent: 'bg-wine-800 text-amber-300',
-  },
-  {
-    icon: <LineChart className="h-6 w-6" />,
-    role: 'Business Development',
-    name: 'Business Development',
-    initials: 'BD',
-    accent: 'bg-amber-600 text-wine-900',
   },
 ];
 
@@ -66,7 +52,7 @@ export function Leadership() {
           />
         </SectionReveal>
 
-        <SectionReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <SectionReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m) => (
             <RevealItem key={m.role}>
               <div className="group flex flex-col items-center rounded-4xl border border-sand-300 bg-sand-50/70 p-8 text-center shadow-soft transition-shadow hover:shadow-lift">
