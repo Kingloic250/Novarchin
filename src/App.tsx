@@ -1,7 +1,10 @@
 import { Navbar } from '@/components/Navbar';
+import { BackToTop } from '@/components/BackToTop';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { PageReveal } from '@/components/PageReveal';
 import { Hero } from '@/components/hero/Hero';
+import { Clients } from '@/components/sections/Clients';
+import { Stats } from '@/components/sections/Stats';
 import { About } from '@/components/sections/About';
 import { CoreValues } from '@/components/sections/CoreValues';
 import { Services } from '@/components/sections/Services';
@@ -20,8 +23,11 @@ export default function App() {
       <PageReveal />
       <ScrollProgress />
       <Navbar />
+      <BackToTop />
       <main>
         <Hero />
+        <Clients />
+        <Stats />
         <About />
         <CoreValues />
         <Services />

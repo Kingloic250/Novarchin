@@ -35,12 +35,31 @@ function Logo() {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('#home');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ['home', 'about', 'services', 'work', 'contact'];
+    const observers: IntersectionObserver[] = [];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActive(`#${id}`);
+        },
+        { rootMargin: '-40% 0px -55% 0px' },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   useEffect(() => {
@@ -66,10 +85,18 @@ export function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="group relative px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-wine-700"
+                className={cn(
+                  'relative px-4 py-2 text-sm font-medium transition-colors',
+                  active === l.href ? 'text-wine-700' : 'text-ink-soft hover:text-wine-700',
+                )}
               >
                 {l.label}
-                <span className="absolute left-4 right-4 -bottom-0.5 h-px origin-left scale-x-0 bg-wine-600 transition-transform duration-300 group-hover:scale-x-100" />
+                <span
+                  className={cn(
+                    'absolute left-4 right-4 -bottom-0.5 h-px bg-wine-600 transition-transform duration-300',
+                    active === l.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                  )}
+                />
               </a>
             ))}
           </div>
@@ -144,7 +171,10 @@ export function Navbar() {
                     initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.1 + i * 0.06, duration: 0.35 }}
-                    className="border-b border-sand-300 py-5 font-display text-3xl font-semibold text-ink transition-colors hover:text-wine-700"
+                    className={cn(
+                      'border-b border-sand-300 py-5 font-display text-3xl font-semibold transition-colors',
+                      active === l.href ? 'text-wine-700' : 'text-ink hover:text-wine-700',
+                    )}
                   >
                     {l.label}
                   </motion.a>
