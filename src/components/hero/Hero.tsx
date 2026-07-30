@@ -102,13 +102,13 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="relative hidden lg:block lg:col-span-4"
         >
-          <div className="relative mx-auto aspect-[3/4] w-full max-w-sm rounded-[2.5rem] border border-sand-300 bg-sand-50/70 p-8 shadow-card">
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-xs rounded-[2.5rem] border border-sand-300 bg-sand-50/70 p-6 shadow-card">
             <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-wine-600/5 to-amber-400/5" />
             <div className="relative flex h-full flex-col">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
                 CEO Message
               </p>
-              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">
+              <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-ink-muted">
                 "At Novarchin, we believe technology should solve real business challenges,
                 not create new ones. Our mission is to empower organizations across Africa
                 with intelligent digital solutions that improve efficiency, drive innovation,
