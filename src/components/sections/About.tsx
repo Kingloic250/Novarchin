@@ -38,7 +38,7 @@ export function About() {
           <RevealItem>
             <p className="mt-5 text-lg leading-relaxed text-ink-muted">
               We build custom software, enterprise systems, AI solutions, fintech platforms,
-              cloud infrastructure, and digital ecosystems that drive transformation.
+              digital ecosystems that drive transformation.
             </p>
           </RevealItem>
         </SectionReveal>

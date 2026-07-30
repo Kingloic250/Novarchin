@@ -45,7 +45,7 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl"
           >
-            Enterprise Software · Artificial Intelligence · Cloud · Cybersecurity · Digital Transformation
+            Enterprise Software · Artificial Intelligence · Cybersecurity · Digital Transformation
           </motion.p>
 
           <motion.p

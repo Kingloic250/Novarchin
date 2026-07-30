@@ -31,7 +31,7 @@ const steps = [
     n: '05',
     icon: <CheckCircle2 className="h-5 w-5" />,
     title: 'QA',
-    description: 'Rigorous testing — unit, integration, performance, and security — to ensure production-ready quality.',
+    description: 'Rigorous testing: unit, integration, performance, and security to ensure production-ready quality.',
   },
   {
     n: '06',
@@ -64,7 +64,7 @@ export function Process() {
           />
           <RevealItem>
             <p className="mt-5 text-lg text-ink-muted">
-              From concept to continuous support — a proven delivery framework.
+              From concept to continuous support. A proven delivery framework.
             </p>
           </RevealItem>
         </SectionReveal>

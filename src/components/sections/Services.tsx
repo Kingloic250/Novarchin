@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { type ReactNode, useRef } from 'react';
 import {
-  Code2, Monitor, Smartphone, Cpu, Banknote, Cloud, Workflow,
+  Code2, Monitor, Smartphone, Cpu, Banknote, Workflow,
   Palette, Shield, Compass,
 } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
@@ -37,11 +37,6 @@ const services: ServiceItem[] = [
     icon: <Banknote className="h-6 w-6" />,
     title: 'FinTech Solutions',
     description: 'Secure, compliant financial platforms including payment gateways, digital wallets, and banking systems.',
-  },
-  {
-    icon: <Cloud className="h-6 w-6" />,
-    title: 'Cloud & DevOps',
-    description: 'Cloud-native architecture, CI/CD pipelines, and infrastructure automation for reliable deployments.',
   },
   {
     icon: <Workflow className="h-6 w-6" />,

@@ -9,9 +9,9 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 120, suffix: '+', label: 'Solutions delivered' },
-  { value: 40, suffix: '+', label: 'Clients worldwide' },
-  { value: 9, suffix: ' yrs', label: 'In the craft' },
+  { value: 30, suffix: '+', label: 'Solutions delivered' },
+  { value: 20, suffix: '+', label: 'Clients worldwide' },
+  { value: 4, suffix: ' yrs', label: 'In the craft' },
   { value: 98, suffix: '%', label: 'Client retention' },
 ];
 

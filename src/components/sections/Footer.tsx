@@ -18,14 +18,13 @@ const columns = [
     links: [
       { label: 'Custom Software', to: '/services' },
       { label: 'AI & Automation', to: '/services' },
-      { label: 'Cloud & DevOps', to: '/services' },
       { label: 'Cybersecurity', to: '/services' },
     ],
   },
   {
     title: 'Connect',
     links: [
-      { label: 'hello@novarchin.studio', href: 'mailto:hello@novarchin.studio' },
+      { label: 'novarchin@gmail.com', href: 'mailto:novarchin@gmail.com' },
     ],
   },
 ];
@@ -65,7 +64,7 @@ export function Footer() {
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
               Engineering Africa's digital future through enterprise software, AI,
-              cloud infrastructure, and transformative digital solutions.
+              transformative digital solutions.
             </p>
 
             <form onSubmit={subscribe} className="mt-6 max-w-sm">
@@ -98,7 +97,7 @@ export function Footer() {
                   animate={{ opacity: 1 }}
                   className="mt-2 text-xs text-wine-700"
                 >
-                  Subscribed — thanks for following along.
+                  Subscribed. Thanks for following along.
                 </motion.p>
               )}
             </form>

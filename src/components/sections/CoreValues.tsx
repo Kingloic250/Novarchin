@@ -38,7 +38,7 @@ const values: Value[] = [
   {
     icon: <BookOpen className="h-6 w-6" />,
     title: 'Continuous Learning',
-    description: 'Technology evolves fast — and so do we. Learning is embedded in our culture.',
+    description: 'Technology evolves fast, and so do we. Learning is embedded in our culture.',
   },
   {
     icon: <Target className="h-6 w-6" />,

@@ -23,7 +23,6 @@ const projectTypes = [
   'Web & Mobile App',
   'AI & Automation',
   'FinTech',
-  'Cloud & DevOps',
   'Cybersecurity',
   'Consulting',
   'Other',
@@ -111,7 +110,7 @@ export function ContactForm() {
             <RevealItem>
               <div className="mt-9 space-y-4">
                 <a
-                  href="mailto:hello@novarchin.studio"
+                  href="mailto:novarchin@gmail.com"
                   className="group flex items-center gap-4 text-ink transition-colors hover:text-wine-700"
                 >
                   <span className="grid h-11 w-11 place-items-center rounded-2xl border border-sand-300 bg-sand-50 transition-colors group-hover:border-wine-700 group-hover:bg-wine-700 group-hover:text-amber-300">
@@ -119,7 +118,7 @@ export function ContactForm() {
                   </span>
                   <div>
                     <div className="text-xs text-ink-muted">Email</div>
-                    <div className="font-medium">hello@novarchin.studio</div>
+                    <div className="font-medium">novarchin@gmail.com</div>
                   </div>
                 </a>
                 <div className="flex items-center gap-4 text-ink">
@@ -128,7 +127,7 @@ export function ContactForm() {
                   </span>
                   <div>
                     <div className="text-xs text-ink-muted">Phone</div>
-                    <div className="font-medium">+1 (415) 555-0142</div>
+                    <div className="font-medium">+250790109452</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-ink">
@@ -137,7 +136,7 @@ export function ContactForm() {
                   </span>
                   <div>
                     <div className="text-xs text-ink-muted">Studio</div>
-                    <div className="font-medium">Remote · Kigali · Nairobi</div>
+                    <div className="font-medium">Kigali</div>
                   </div>
                 </div>
               </div>
