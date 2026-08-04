@@ -122,11 +122,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color 0.3s ease, color 0.3s ease;
   background-color: var(--bg);
   color: var(--ink);
@@ -209,10 +212,10 @@ body {
   z-index: -1;
 }
 .section-glow::before {
-  right: -10%;
+  right: 0;
 }
 .section-glow-left::before {
-  left: -10%;
+  left: 0;
 }
 
 /* Decorative orb motif */
