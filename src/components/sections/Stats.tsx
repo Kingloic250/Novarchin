@@ -58,10 +58,10 @@ function StatCounter({ stat }: { stat: Stat }) {
 
 export function Stats() {
   return (
-    <section className="relative py-20">
+    <section className="section-glow-left relative py-20">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionReveal className="relative overflow-hidden rounded-5xl border border-sand-300 bg-sand-100/70 p-10 shadow-soft sm:p-14">
-          <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-wine-600/10 blur-3xl" />
+        <SectionReveal className="relative overflow-hidden rounded-5xl border border-sand-300 bg-sand-50 p-10 shadow-soft sm:p-14">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-amber-400/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-amber-400/10 blur-3xl" />
           <div className="relative grid grid-cols-2 gap-10 lg:grid-cols-4">
             {stats.map((s) => (

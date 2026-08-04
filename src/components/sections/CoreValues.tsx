@@ -49,11 +49,11 @@ const values: Value[] = [
 
 export function CoreValues() {
   return (
-    <section className="relative py-24 sm:py-32">
+    <section className="section-glow relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
               Core Values
             </span>
           </RevealItem>
@@ -67,9 +67,9 @@ export function CoreValues() {
         <SectionReveal className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((v) => (
             <RevealItem key={v.title}>
-              <div className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift">
+              <div className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-wine-600/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow transition-transform duration-300 group-hover:scale-110">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-sand-300 bg-sand-50 text-amber-400 shadow-glow transition-transform duration-300 group-hover:scale-110">
                   {v.icon}
                 </span>
                 <h3 className="relative mt-5 font-display text-xl font-semibold text-ink">

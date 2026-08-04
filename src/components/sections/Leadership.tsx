@@ -17,31 +17,31 @@ const team: Member[] = [
     role: 'Chief Executive Officer',
     name: 'Rutagengwa Bruce',
     initials: 'RB',
-    accent: 'bg-wine-700 text-amber-300',
+    accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
   {
     icon: <Cpu className="h-6 w-6" />,
     role: 'Chief Technology Officer',
     name: 'Gisagara Ganza Brian',
     initials: 'GB',
-    accent: 'bg-amber-500 text-wine-800',
+    accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
   {
     icon: <HardDrive className="h-6 w-6" />,
     role: 'Head of Engineering',
     name: 'Rudahigwa Mparabanyi Loic',
     initials: 'RL',
-    accent: 'bg-ink text-amber-300',
+    accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
 ];
 
 export function Leadership() {
   return (
-    <section id="leadership" className="relative py-24 sm:py-32">
+    <section id="leadership" className="section-glow relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
               Leadership Team
             </span>
           </RevealItem>
@@ -55,7 +55,7 @@ export function Leadership() {
         <SectionReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m) => (
             <RevealItem key={m.role}>
-              <div className="group flex flex-col items-center rounded-4xl border border-sand-300 bg-sand-50/70 p-8 text-center shadow-soft transition-shadow hover:shadow-lift">
+              <div className="group flex flex-col items-center rounded-4xl border border-sand-300 bg-sand-50 p-8 text-center shadow-soft transition-shadow hover:shadow-lift">
                 <span
                   className={`grid h-20 w-20 place-items-center rounded-full font-display text-2xl font-bold shadow-glow ${m.accent}`}
                 >
@@ -64,7 +64,7 @@ export function Leadership() {
                 <h3 className="mt-5 font-display text-lg font-semibold text-ink">
                   {m.name}
                 </h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-wine-700">
+                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-amber-600 dark:text-amber-300">
                   {m.role}
                 </p>
               </div>

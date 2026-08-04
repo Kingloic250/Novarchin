@@ -2,10 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/Novarchin%20Logo.png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="/Novarchin%20Logo.png" sizes="180x180" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('novarchin-theme');
+          if (t !== 'light') t = 'dark';
+          document.documentElement.classList.toggle('dark', t === 'dark');
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/png" href="/Novarchin.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/Novarchin.png" sizes="180x180" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FAFAF7" />
+    <meta name="theme-color" content="#331715" />
     <title>Novarchin — Engineering Africa's Digital Future</title>
     <meta
       name="description"
@@ -17,14 +28,14 @@
       property="og:description"
       content="Enterprise software, AI, cloud, and cybersecurity solutions for Africa's digital transformation."
     />
-    <meta property="og:image" content="/Novarchin%20Logo.png" />
+    <meta property="og:image" content="/Novarchin.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Novarchin — Engineering Africa's Digital Future" />
     <meta
       name="twitter:description"
       content="Enterprise software, AI, cloud, and cybersecurity solutions for Africa's digital transformation."
     />
-    <meta name="twitter:image" content="/Novarchin%20Logo.png" />
+    <meta name="twitter:image" content="/Novarchin.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

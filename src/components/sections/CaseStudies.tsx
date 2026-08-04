@@ -30,7 +30,7 @@ const projects: Project[] = [
       'An integrated HMS covering patient records, appointment scheduling, billing, lab integration, and analytics for a network of hospitals across East Africa.',
     tags: ['Angular', '.NET', 'SQL Server', 'Azure'],
     gradient: 'from-amber-500 via-amber-600 to-wine-700',
-    accent: 'text-sand-50',
+    accent: 'text-white',
   },
   {
     name: 'NGO Impact Platform',
@@ -80,7 +80,7 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/70 via-ink/10 to-transparent p-7 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
+        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-7 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
           <p className={cn('max-w-md text-sm leading-relaxed', project.accent)}>
             {project.description}
           </p>
@@ -89,7 +89,7 @@ function ProjectCard({ project }: { project: Project }) {
 
       <div className="flex items-start justify-between gap-4 bg-sand-50 p-6">
         <div>
-          <span className="text-xs font-medium uppercase tracking-wider text-wine-700">
+          <span className="text-xs font-medium uppercase tracking-wider text-amber-600 dark:text-amber-300">
             {project.category}
           </span>
           <h3 className="mt-1.5 font-display text-xl font-semibold text-ink">
@@ -106,7 +106,7 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
         </div>
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-sand-300 text-ink-soft transition-all duration-300 group-hover:border-wine-700 group-hover:bg-wine-700 group-hover:text-sand-50">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-sand-300 text-ink-soft transition-all duration-300 group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-white dark:group-hover:text-sand-100">
           <ArrowUpRight className="h-4 w-4" />
         </span>
       </div>
@@ -116,11 +116,11 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function CaseStudies() {
   return (
-    <section id="work" className="relative py-24 sm:py-32">
+    <section id="work" className="section-glow-left relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
               Case Studies
             </span>
           </RevealItem>

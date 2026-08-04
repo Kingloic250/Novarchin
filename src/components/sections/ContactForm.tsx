@@ -54,7 +54,7 @@ function Field({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="mt-1.5 text-xs font-medium text-wine-700"
+            className="mt-1.5 text-xs font-medium text-amber-400"
           >
             {error}
           </motion.p>
@@ -65,7 +65,7 @@ function Field({
 }
 
 const inputClass =
-  'w-full rounded-2xl border border-sand-300 bg-sand-50/70 px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 transition-all focus:border-wine-600 focus:bg-sand-50 focus:outline-none focus:ring-2 focus:ring-wine-600/20';
+  'w-full rounded-2xl border border-sand-300 bg-sand-50 px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 transition-all focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20';
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -85,13 +85,13 @@ export function ContactForm() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
+    <section id="contact" className="section-glow-left relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left: info */}
           <SectionReveal className="lg:col-span-5">
             <RevealItem>
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
                 Contact
               </span>
             </RevealItem>
@@ -111,9 +111,9 @@ export function ContactForm() {
               <div className="mt-9 space-y-4">
                 <a
                   href="mailto:novarchin@gmail.com"
-                  className="group flex items-center gap-4 text-ink transition-colors hover:text-wine-700"
+                  className="group flex items-center gap-4 text-ink transition-colors hover:text-amber-400"
                 >
-                  <span className="grid h-11 w-11 place-items-center rounded-2xl border border-sand-300 bg-sand-50 transition-colors group-hover:border-wine-700 group-hover:bg-wine-700 group-hover:text-amber-300">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl border border-sand-300 bg-sand-50 transition-colors group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-white dark:group-hover:text-sand-100">
                     <Mail className="h-5 w-5" />
                   </span>
                   <div>
@@ -146,7 +146,7 @@ export function ContactForm() {
           {/* Right: form */}
           <SectionReveal className="lg:col-span-7">
             <RevealItem>
-              <div className="relative rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-card sm:p-9">
+              <div className="relative rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-card sm:p-9">
                 <AnimatePresence mode="wait">
                   {submitted ? (
                     <motion.div
@@ -159,7 +159,7 @@ export function ContactForm() {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', stiffness: 220, damping: 14, delay: 0.1 }}
-                        className="grid h-16 w-16 place-items-center rounded-full bg-wine-700 text-amber-300 shadow-glow"
+                        className="grid h-16 w-16 place-items-center rounded-full bg-amber-400 text-white shadow-glow dark:text-sand-100"
                       >
                         <CheckCircle2 className="h-8 w-8" />
                       </motion.span>
@@ -172,7 +172,7 @@ export function ContactForm() {
                       </p>
                       <button
                         onClick={() => setSubmitted(false)}
-                        className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-wine-700 hover:text-wine-800"
+                        className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-amber-400 hover:text-amber-500"
                       >
                         Send another message
                         <ArrowUpRight className="h-4 w-4" />
@@ -194,7 +194,7 @@ export function ContactForm() {
                             id="name"
                             type="text"
                             placeholder="Jane Doe"
-                            className={cn(inputClass, errors.name && 'border-wine-600 bg-wine-50/40')}
+                            className={cn(inputClass, errors.name && 'border-amber-400 bg-amber-400/10')}
                             {...register('name')}
                           />
                         </Field>
@@ -203,7 +203,7 @@ export function ContactForm() {
                             id="email"
                             type="email"
                             placeholder="jane@company.com"
-                            className={cn(inputClass, errors.email && 'border-wine-600 bg-wine-50/40')}
+                            className={cn(inputClass, errors.email && 'border-amber-400 bg-amber-400/10')}
                             {...register('email')}
                           />
                         </Field>
@@ -216,7 +216,7 @@ export function ContactForm() {
                       >
                         <select
                           id="projectType"
-                          className={cn(inputClass, 'appearance-none', errors.projectType && 'border-wine-600 bg-wine-50/40')}
+                          className={cn(inputClass, 'appearance-none', errors.projectType && 'border-amber-400 bg-amber-400/10')}
                           {...register('projectType')}
                           defaultValue=""
                         >
@@ -240,7 +240,7 @@ export function ContactForm() {
                           id="message"
                           rows={5}
                           placeholder="Tell us about your project, timeline, and requirements…"
-                          className={cn(inputClass, 'resize-none', errors.message && 'border-wine-600 bg-wine-50/40')}
+                          className={cn(inputClass, 'resize-none', errors.message && 'border-amber-400 bg-amber-400/10')}
                           {...register('message')}
                         />
                       </Field>
@@ -248,7 +248,7 @@ export function ContactForm() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-wine-700 px-6 py-4 text-sm font-medium text-sand-50 shadow-lift transition-all hover:bg-wine-800 disabled:opacity-70 sm:w-auto"
+                        className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-400 px-6 py-4 text-sm font-medium text-white shadow-lift transition-all hover:bg-amber-500 disabled:opacity-70 dark:text-sand-100 sm:w-auto"
                       >
                         {isSubmitting ? (
                           <>

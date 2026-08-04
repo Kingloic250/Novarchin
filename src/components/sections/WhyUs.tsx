@@ -23,11 +23,11 @@ const advantageSteps = [
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="relative py-24 sm:py-32">
+    <section id="why-us" className="section-glow-left relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionReveal className="mb-14 max-w-2xl">
           <RevealItem>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
               Why Choose Us
             </span>
           </RevealItem>
@@ -43,8 +43,8 @@ export function WhyUs() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {reasons.map((r) => (
                 <RevealItem key={r.text}>
-                  <div className="flex items-center gap-4 rounded-2xl border border-sand-300 bg-sand-50/70 p-5 shadow-soft">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-wine-700 text-amber-300">
+                  <div className="flex items-center gap-4 rounded-2xl border border-sand-300 bg-sand-50 p-5 shadow-soft">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-sand-300 bg-sand-50 text-amber-400">
                       {r.icon}
                     </span>
                     <span className="text-sm font-medium text-ink">{r.text}</span>
@@ -56,8 +56,8 @@ export function WhyUs() {
 
           <SectionReveal>
             <RevealItem>
-              <div className="rounded-4xl border border-sand-300 bg-sand-50/70 p-8 shadow-soft">
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+              <div className="rounded-4xl border border-sand-300 bg-sand-50 p-8 shadow-soft">
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
                   Competitive Advantage
                 </p>
                 <p className="mt-2 text-sm text-ink-muted">
@@ -71,13 +71,13 @@ export function WhyUs() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.08 }}
-                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-wine-700 text-xs font-semibold text-amber-300"
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-sand-300 bg-sand-50 text-xs font-semibold text-amber-400"
                       >
                         {i + 1}
                       </motion.div>
                       <span className="text-sm font-medium text-ink">{step}</span>
                       {i < advantageSteps.length - 1 && (
-                        <ArrowRight className="ml-auto h-4 w-4 text-wine-700/40" />
+                        <ArrowRight className="ml-auto h-4 w-4 text-amber-400/40" />
                       )}
                     </div>
                   ))}

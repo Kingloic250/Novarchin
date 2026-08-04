@@ -42,7 +42,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-sand-300 bg-sand-100/60">
+    <footer className="relative overflow-hidden border-t border-sand-300 bg-sand-100/60">
+      <div className="orb -right-16 -top-24 h-64 w-64 -z-10 opacity-50" />
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -75,7 +76,7 @@ export function Footer() {
                 />
                 <button
                   type="submit"
-                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-wine-700 text-amber-300 transition-all hover:bg-wine-800"
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-amber-400 text-white transition-all hover:bg-amber-500 dark:text-sand-100"
                   aria-label="Subscribe"
                 >
                   {done ? <CheckCircle2 className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
@@ -85,7 +86,7 @@ export function Footer() {
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="mt-2 text-xs text-wine-700"
+                  className="mt-2 text-xs text-amber-400"
                 >
                   Subscribed. Thanks for following along.
                 </motion.p>
@@ -105,21 +106,21 @@ export function Footer() {
                       {'to' in l ? (
                         <Link
                           to={l.to}
-                          className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-wine-700"
+                          className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-amber-400"
                         >
                           <span className="relative">
                             {l.label}
-                            <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-wine-700 transition-all duration-300 group-hover:w-full" />
+                            <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover:w-full" />
                           </span>
                         </Link>
                       ) : (
                         <a
                           href={l.href ?? '#'}
-                          className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-wine-700"
+                          className="group inline-flex items-center text-sm text-ink-soft transition-colors hover:text-amber-400"
                         >
                           <span className="relative">
                             {l.label}
-                            <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-wine-700 transition-all duration-300 group-hover:w-full" />
+                            <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover:w-full" />
                           </span>
                         </a>
                       )}

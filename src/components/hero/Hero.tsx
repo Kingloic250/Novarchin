@@ -16,10 +16,12 @@ const item = {
 export function Hero() {
   const navigate = useNavigate();
   return (
-    <section id="home" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+    <section id="home" className="section-glow relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
       <div className="pointer-events-none absolute inset-0 -z-10 mesh-bg opacity-80" />
-      <div className="pointer-events-none absolute -top-24 right-[-10%] -z-10 h-[520px] w-[520px] rounded-full bg-wine-600/15 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-[-10%] left-[-8%] -z-10 h-[420px] w-[420px] rounded-full bg-amber-400/15 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-24 right-[-10%] -z-10 h-[560px] w-[560px] rounded-full bg-amber-400/25 blur-[130px] dark:bg-amber-400/20" />
+      <div className="pointer-events-none absolute bottom-[-10%] left-[-8%] -z-10 h-[460px] w-[460px] rounded-full bg-wine-600/20 blur-[120px] dark:bg-wine-600/25" />
+      <div className="pointer-events-none absolute -top-10 left-[30%] -z-10 h-[380px] w-[380px] rounded-full bg-wine-700/15 blur-[110px]" />
+      <div className="orb -right-16 top-1/3 h-40 w-40 -z-10 opacity-70 lg:block" />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12 lg:gap-8">
         <motion.div
@@ -30,7 +32,7 @@ export function Hero() {
         >
           <motion.div
             variants={item}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-wine-600/20 bg-wine-50/60 px-3.5 py-1.5 text-xs font-medium text-wine-700"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1.5 text-xs font-medium text-amber-600 dark:text-amber-300"
           >
             <Sparkles className="h-3.5 w-3.5" />
             Engineering Africa's Digital Future
@@ -59,7 +61,7 @@ export function Hero() {
 
           <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
             <MagneticButton
-              className="group inline-flex items-center gap-2 rounded-full bg-wine-700 px-7 py-3.5 text-sm font-medium text-sand-50 shadow-lift transition-all hover:bg-wine-800"
+              className="group inline-flex items-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-medium text-white shadow-lift transition-all hover:bg-amber-500 dark:text-sand-100"
               onClick={() => navigate('/contact')}
             >
               Start a Project
@@ -68,7 +70,7 @@ export function Hero() {
 
             <MagneticButton
               strength={0.25}
-              className="group inline-flex items-center gap-2 rounded-full border border-sand-400 bg-sand-50/60 px-7 py-3.5 text-sm font-medium text-ink transition-all hover:border-wine-600/40 hover:bg-sand-50"
+              className="group inline-flex items-center gap-2 rounded-full border border-sand-300 px-7 py-3.5 text-sm font-medium text-ink transition-all hover:border-amber-400"
               onClick={() => navigate('/services')}
             >
               Explore Services
@@ -102,10 +104,10 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="relative hidden lg:block lg:col-span-4"
         >
-          <div className="relative mx-auto aspect-[3/4] w-full max-w-xs rounded-[2.5rem] border border-sand-300 bg-sand-50/70 p-6 shadow-card">
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-xs rounded-[2.5rem] border border-sand-300 bg-sand-50 p-6 shadow-card">
             <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-wine-600/5 to-amber-400/5" />
             <div className="relative flex h-full flex-col">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
                 CEO Message
               </p>
               <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-ink-muted">
@@ -117,7 +119,7 @@ export function Hero() {
               <div className="border-t border-sand-300 pt-4">
                 <p className="text-xs text-ink-muted">Rutagengwa Bruce</p>
                 <p className="font-display text-xl font-bold text-ink">CEO, Novarchin</p>
-                <div className="mt-2 h-px w-16 bg-wine-700" />
+                <div className="mt-2 h-px w-16 bg-amber-400" />
               </div>
             </div>
           </div>

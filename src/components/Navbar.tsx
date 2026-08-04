@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/hooks/useTheme';
 
 const links = [
   { label: 'Home', to: '/' },
@@ -32,6 +33,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     setOpen(false);
@@ -56,7 +58,7 @@ export function Navbar() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled ? 'glass-nav border-b border-sand-300/70 py-3' : 'py-5 border-b border-transparent',
+          scrolled ? 'glass-nav border-b border-sand-300/70 py-3 dark:border-transparent' : 'py-5 border-b border-transparent',
         )}
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6">
@@ -69,13 +71,13 @@ export function Navbar() {
                 to={l.to}
                 className={cn(
                   'relative px-4 py-2 text-sm font-medium transition-colors',
-                  isActive(pathname, l.to) ? 'text-wine-700' : 'text-ink-soft hover:text-wine-700',
+                  isActive(pathname, l.to) ? 'text-amber-600 dark:text-amber-400' : 'text-ink-soft hover:text-amber-600 dark:hover:text-amber-400',
                 )}
               >
                 {l.label}
                 <span
                   className={cn(
-                    'absolute left-4 right-4 -bottom-0.5 h-px bg-wine-600 transition-transform duration-300',
+                    'absolute left-4 right-4 -bottom-0.5 h-px bg-amber-400 transition-transform duration-300',
                     isActive(pathname, l.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
                   )}
                 />
@@ -83,10 +85,18 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-3 md:flex">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="grid h-10 w-10 place-items-center rounded-full border border-sand-300 bg-sand-50 text-ink transition-colors hover:border-amber-400 hover:text-amber-500 dark:hover:text-amber-400"
+              aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            >
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-sand-50 transition-all hover:bg-wine-700 hover:shadow-glow"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-amber-500 hover:shadow-glow dark:text-sand-100"
             >
               Start a Project
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -157,7 +167,7 @@ export function Navbar() {
                       onClick={() => setOpen(false)}
                       className={cn(
                         'block border-b border-sand-300 py-5 font-display text-3xl font-semibold transition-colors',
-                        isActive(pathname, l.to) ? 'text-wine-700' : 'text-ink hover:text-wine-700',
+                        isActive(pathname, l.to) ? 'text-amber-600 dark:text-amber-400' : 'text-ink hover:text-amber-600 dark:hover:text-amber-400',
                       )}
                     >
                       {l.label}
@@ -165,10 +175,20 @@ export function Navbar() {
                   </motion.div>
                 ))}
               </div>
+              <div className="flex items-center gap-2 pb-6">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-sand-300 bg-sand-50 text-ink transition-colors hover:border-amber-400 hover:text-amber-500 dark:hover:text-amber-400"
+                  aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+                >
+                  {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                </button>
+              </div>
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-wine-700 px-6 py-4 text-base font-medium text-sand-50"
+                className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 px-6 py-4 text-base font-medium text-white dark:text-sand-100"
               >
                 Start a Project
                 <ArrowUpRight className="h-5 w-5" />

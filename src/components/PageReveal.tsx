@@ -44,7 +44,7 @@ export function PageReveal() {
             className="flex items-center gap-3"
           >
             <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-12 w-12" />
-            <span className="font-display text-3xl font-bold tracking-tight text-sand-50">
+            <span className="font-display text-3xl font-bold tracking-tight text-sand-50 dark:text-wine-950">
               Novarchin
             </span>
           </motion.div>

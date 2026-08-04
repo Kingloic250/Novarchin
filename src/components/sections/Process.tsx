@@ -49,11 +49,11 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="relative py-24 sm:py-32">
+    <section id="process" className="section-glow relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionReveal className="mb-16 max-w-2xl">
           <RevealItem>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-wine-700">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
               Software Development Lifecycle
             </span>
           </RevealItem>
@@ -72,14 +72,14 @@ export function Process() {
           <SectionReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {steps.map((s) => (
               <RevealItem key={s.n}>
-                <div className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50/70 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift">
+                <div className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-wine-600/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative flex items-start gap-4">
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-wine-700 text-amber-300 shadow-glow transition-transform duration-300 group-hover:scale-110">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-sand-300 bg-sand-50 text-amber-400 shadow-glow transition-transform duration-300 group-hover:scale-110">
                       {s.icon}
                     </span>
                     <div>
-                      <span className="font-display text-xs font-semibold text-wine-700/40">
+                      <span className="font-display text-xs font-semibold text-amber-400/40">
                         {s.n}
                       </span>
                       <h3 className="font-display text-lg font-semibold text-ink">
