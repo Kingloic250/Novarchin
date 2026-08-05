@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
+import { TiltCard } from '@/components/TiltCard';
 
 interface Industry {
   icon: ReactNode;
@@ -42,14 +43,14 @@ export function Industries() {
         <SectionReveal className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {industries.map((ind) => (
             <RevealItem key={ind.name}>
-              <div className="group flex flex-col items-center gap-4 rounded-3xl border border-sand-300 bg-sand-50 p-8 shadow-soft transition-all hover:border-amber-400/40 hover:shadow-lift">
+              <TiltCard className="flex flex-col items-center gap-4 rounded-3xl border border-sand-300 bg-sand-50 p-8 shadow-soft hover:border-amber-400/40">
                 <span className="grid h-14 w-14 place-items-center rounded-2xl border border-sand-300 bg-sand-50 text-amber-400 shadow-glow transition-transform group-hover:scale-110">
                   {ind.icon}
                 </span>
                 <span className="text-center text-sm font-medium text-ink-soft">
                   {ind.name}
                 </span>
-              </div>
+              </TiltCard>
             </RevealItem>
           ))}
         </SectionReveal>

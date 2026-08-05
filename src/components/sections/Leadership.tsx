@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import { Briefcase, Cpu, HardDrive } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
+import { TiltCard } from '@/components/TiltCard';
 
 interface Member {
   icon: ReactNode;
@@ -55,7 +56,7 @@ export function Leadership() {
         <SectionReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m) => (
             <RevealItem key={m.role}>
-              <div className="group flex flex-col items-center rounded-4xl border border-sand-300 bg-sand-50 p-8 text-center shadow-soft transition-shadow hover:shadow-lift">
+              <TiltCard className="flex flex-col items-center rounded-4xl border border-sand-300 bg-sand-50 p-8 text-center shadow-soft">
                 <span
                   className={`grid h-20 w-20 place-items-center rounded-full font-display text-2xl font-bold shadow-glow ${m.accent}`}
                 >
@@ -67,7 +68,7 @@ export function Leadership() {
                 <p className="mt-1 text-xs font-medium uppercase tracking-wider text-amber-600 dark:text-amber-300">
                   {m.role}
                 </p>
-              </div>
+              </TiltCard>
             </RevealItem>
           ))}
         </SectionReveal>

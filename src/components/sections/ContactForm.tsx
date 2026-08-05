@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
+import { TiltCard } from '@/components/TiltCard';
 import { cn } from '@/lib/utils';
 
 const schema = z.object({
@@ -146,7 +147,7 @@ export function ContactForm() {
           {/* Right: form */}
           <SectionReveal className="lg:col-span-7">
             <RevealItem>
-              <div className="relative rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-card sm:p-9">
+              <TiltCard className="relative rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-card sm:p-9">
                 <AnimatePresence mode="wait">
                   {submitted ? (
                     <motion.div
@@ -265,7 +266,7 @@ export function ContactForm() {
                     </motion.form>
                   )}
                 </AnimatePresence>
-              </div>
+              </TiltCard>
             </RevealItem>
           </SectionReveal>
         </div>

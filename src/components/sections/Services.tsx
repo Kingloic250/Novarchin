@@ -1,11 +1,11 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { type ReactNode, useRef } from 'react';
+import { type ReactNode } from 'react';
 import {
   Code2, Monitor, Smartphone, Cpu, Banknote, Workflow,
   Palette, Shield, Compass,
 } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
+import { TiltCard } from '@/components/TiltCard';
 interface ServiceItem {
   icon: ReactNode;
   title: string;
@@ -61,35 +61,8 @@ const services: ServiceItem[] = [
 ];
 
 function ServiceCard({ service }: { service: ServiceItem }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const rx = useMotionValue(0);
-  const ry = useMotionValue(0);
-  const srx = useSpring(rx, { stiffness: 200, damping: 18 });
-  const sry = useSpring(ry, { stiffness: 200, damping: 18 });
-  const rotateX = useTransform(srx, [-0.5, 0.5], ['7deg', '-7deg']);
-  const rotateY = useTransform(sry, [-0.5, 0.5], ['-7deg', '7deg']);
-
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    rx.set((e.clientY - rect.top) / rect.height - 0.5);
-    ry.set((e.clientX - rect.left) / rect.width - 0.5);
-  };
-  const reset = () => {
-    rx.set(0);
-    ry.set(0);
-  };
-
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={reset}
-      style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      className="group relative overflow-hidden rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-soft transition-shadow duration-300 hover:shadow-lift"
-    >
-      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-wine-600/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <TiltCard className="rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-soft">
       <span className="grid h-12 w-12 place-items-center rounded-2xl border border-sand-300 bg-sand-50 text-amber-400 shadow-glow transition-transform duration-300 group-hover:scale-110">
         {service.icon}
       </span>
@@ -99,7 +72,7 @@ function ServiceCard({ service }: { service: ServiceItem }) {
       <p className="relative mt-2 text-sm leading-relaxed text-ink-muted">
         {service.description}
       </p>
-    </motion.div>
+    </TiltCard>
   );
 }
 

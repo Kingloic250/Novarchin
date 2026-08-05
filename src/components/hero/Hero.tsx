@@ -121,7 +121,7 @@ export function Hero() {
                 <p className="font-display text-xl font-bold text-ink">CEO, Novarchin</p>
                 <div className="mt-2 h-px w-16 bg-amber-400" />
               </div>
-            </div>
+              </div>
           </div>
         </motion.div>
       </div>

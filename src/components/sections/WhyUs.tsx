@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Shield, LayoutGrid, Timer, MessageSquareText, HeartHandshake, User, ArrowRight } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
+import { TiltCard } from '@/components/TiltCard';
 
 const reasons = [
   { icon: <Shield className="h-5 w-5" />, text: 'Enterprise-grade security' },
@@ -43,12 +44,12 @@ export function WhyUs() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {reasons.map((r) => (
                 <RevealItem key={r.text}>
-                  <div className="flex items-center gap-4 rounded-2xl border border-sand-300 bg-sand-50 p-5 shadow-soft">
+                  <TiltCard className="flex items-center gap-4 rounded-2xl border border-sand-300 bg-sand-50 p-5 shadow-soft">
                     <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-sand-300 bg-sand-50 text-amber-400">
                       {r.icon}
                     </span>
                     <span className="text-sm font-medium text-ink">{r.text}</span>
-                  </div>
+                  </TiltCard>
                 </RevealItem>
               ))}
             </div>
@@ -56,7 +57,7 @@ export function WhyUs() {
 
           <SectionReveal>
             <RevealItem>
-              <div className="rounded-4xl border border-sand-300 bg-sand-50 p-8 shadow-soft">
+              <TiltCard className="rounded-4xl border border-sand-300 bg-sand-50 p-8 shadow-soft">
                 <p className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
                   Competitive Advantage
                 </p>
@@ -82,7 +83,7 @@ export function WhyUs() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </TiltCard>
             </RevealItem>
           </SectionReveal>
         </div>

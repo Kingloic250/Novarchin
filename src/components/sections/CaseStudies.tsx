@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionReveal, RevealItem } from '@/components/SectionReveal';
 import { RevealWords } from '@/components/RevealWords';
+import { TiltCard } from '@/components/TiltCard';
 import { cn } from '@/lib/utils';
 
 interface Project {
@@ -45,11 +45,7 @@ const projects: Project[] = [
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-      className="group relative overflow-hidden rounded-4xl border border-sand-300 shadow-card"
-    >
+    <TiltCard className="group relative overflow-hidden rounded-4xl border border-sand-300 shadow-card">
       <div
         className={cn(
           'relative aspect-[16/11] w-full bg-gradient-to-br',
@@ -110,7 +106,7 @@ function ProjectCard({ project }: { project: Project }) {
           <ArrowUpRight className="h-4 w-4" />
         </span>
       </div>
-    </motion.article>
+    </TiltCard>
   );
 }
 

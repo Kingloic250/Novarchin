@@ -20,11 +20,9 @@ function isActive(pathname: string, to: string) {
 
 function Logo() {
   return (
-    <Link to="/" className="group flex items-center gap-2.5" aria-label="Novarchin home">
-      <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-24 w-24" />
-      <span className="font-display text-xl font-bold tracking-tight text-ink">
-        Novarchin
-      </span>
+    <Link to="/" className="group flex items-center" aria-label="Novarchin home">
+      <img src="/logo.png" alt="Novarchin" className="hidden h-12 w-12 dark:block" />
+      <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-12 w-12 dark:hidden" />
     </Link>
   );
 }

@@ -41,12 +41,10 @@ export function PageReveal() {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-3"
+            className="flex items-center"
           >
-            <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-12 w-12" />
-            <span className="font-display text-3xl font-bold tracking-tight text-sand-50 dark:text-wine-950">
-              Novarchin
-            </span>
+            <img src="/logo.png" alt="Novarchin" className="h-12 w-12 dark:hidden" />
+            <img src="/Novarchin%20Logo.png" alt="Novarchin" className="hidden h-12 w-12 dark:block" />
           </motion.div>
         </motion.div>
       )}
