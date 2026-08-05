@@ -15,22 +15,22 @@ const team: Member[] = [
   {
     icon: <Briefcase className="h-6 w-6" />,
     role: 'Chief Executive Officer',
-    name: 'Rutagengwa Bruce',
-    initials: 'RB',
+    name: 'Bruce Rutagengwa',
+    initials: 'BR',
     accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
   {
     icon: <Cpu className="h-6 w-6" />,
     role: 'Chief Technology Officer',
-    name: 'Gisagara Ganza Brian',
-    initials: 'GB',
+    name: 'Brian Ganza Gisagara',
+    initials: 'BG',
     accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
   {
     icon: <HardDrive className="h-6 w-6" />,
     role: 'Head of Engineering',
-    name: 'Rudahigwa Mparabanyi Loic',
-    initials: 'RL',
+    name: 'Loic Mparabanyi Rudahigwa',
+    initials: 'LR',
     accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
 ];
