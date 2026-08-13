@@ -16,33 +16,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: 'Digital Banking Platform',
-    category: 'FinTech',
-    description:
-      'A secure, scalable digital banking solution with multi-currency wallets, instant transfers, and real-time transaction monitoring for an African fintech startup.',
-    tags: ['React', 'Java', 'PostgreSQL', 'AWS'],
-    gradient: 'from-wine-700 via-wine-800 to-wine-950',
-    accent: 'text-amber-300',
-  },
-  {
-    name: 'Hospital Management System',
-    category: 'HealthTech',
-    description:
-      'An integrated HMS covering patient records, appointment scheduling, billing, lab integration, and analytics for a network of hospitals across East Africa.',
-    tags: ['Angular', '.NET', 'SQL Server', 'Azure'],
-    gradient: 'from-amber-500 via-amber-600 to-wine-700',
-    accent: 'text-white',
-  },
-  {
-    name: 'NGO Impact Platform',
-    category: 'Social Impact',
-    description:
-      'A donor management and field operations platform enabling real-time impact tracking, fund allocation, and beneficiary management for international NGOs.',
-    tags: ['Vue', 'Python', 'MongoDB', 'GCP'],
-    gradient: 'from-wine-600 via-wine-700 to-amber-600',
-    accent: 'text-amber-200',
-  },
-  {
     name: 'Movara',
     category: 'FinTech',
     description:
@@ -163,7 +136,7 @@ export function CaseStudies() {
           />
         </SectionReveal>
 
-        <SectionReveal className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <SectionReveal className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {projects.map((p) => (
             <RevealItem key={p.name}>
               <ProjectCard project={p} />
