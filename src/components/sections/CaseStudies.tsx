@@ -11,6 +11,7 @@ interface Project {
   tags: string[];
   gradient: string;
   accent: string;
+  href?: string;
 }
 
 const projects: Project[] = [
@@ -40,6 +41,26 @@ const projects: Project[] = [
     tags: ['Vue', 'Python', 'MongoDB', 'GCP'],
     gradient: 'from-wine-600 via-wine-700 to-amber-600',
     accent: 'text-amber-200',
+  },
+  {
+    name: 'Movara',
+    category: 'FinTech',
+    description:
+      'A modern digital wallet platform that makes everyday money management simple, secure, and instant. Send, receive, save, and track finances from one seamless app for individuals and businesses.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    gradient: 'from-amber-500 via-amber-600 to-wine-700',
+    accent: 'text-white',
+    href: 'https://movara-xi.vercel.app/',
+  },
+  {
+    name: 'CoreEd',
+    category: 'EdTech',
+    description:
+      'A full-stack university management platform centralizing students, lecturers, courses, departments, attendance, grades, and fees into one role-based web app, secured with JWT authentication and granular permissions.',
+    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    gradient: 'from-wine-600 via-wine-700 to-amber-600',
+    accent: 'text-amber-200',
+    href: 'https://core-ed-ten.vercel.app/',
   },
 ];
 
@@ -102,9 +123,24 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
         </div>
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-sand-300 text-ink-soft transition-all duration-300 group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-white dark:group-hover:text-sand-100">
-          <ArrowUpRight className="h-4 w-4" />
-        </span>
+        {project.href ? (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${project.name}`}
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-sand-300 py-2 pl-3 pr-2 text-xs font-medium text-ink-soft transition-colors duration-300 group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-white dark:group-hover:text-sand-100"
+          >
+            <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-[4rem] group-hover:opacity-100">
+              Visit
+            </span>
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        ) : (
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-sand-300 text-ink-soft">
+            <ArrowUpRight className="h-4 w-4" />
+          </span>
+        )}
       </div>
     </TiltCard>
   );
