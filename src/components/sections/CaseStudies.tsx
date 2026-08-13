@@ -11,6 +11,7 @@ interface Project {
   tags: string[];
   gradient: string;
   accent: string;
+  image?: string;
   href?: string;
 }
 
@@ -23,6 +24,7 @@ const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
     gradient: 'from-amber-500 via-amber-600 to-wine-700',
     accent: 'text-white',
+    image: '/movara.png',
     href: 'https://movara-xi.vercel.app/',
   },
   {
@@ -33,6 +35,7 @@ const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
     gradient: 'from-wine-600 via-wine-700 to-amber-600',
     accent: 'text-amber-200',
+    image: '/coreEd.png',
     href: 'https://core-ed-ten.vercel.app/',
   },
 ];
@@ -46,29 +49,39 @@ function ProjectCard({ project }: { project: Project }) {
           project.gradient,
         )}
       >
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
-        />
-        <div className="absolute inset-0 grid place-items-center">
-          <div className="relative h-[58%] w-[72%] rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-[1.04]">
-            <div className="flex items-center gap-1.5 border-b border-white/15 px-4 py-3">
-              <span className="h-2 w-2 rounded-full bg-white/40" />
-              <span className="h-2 w-2 rounded-full bg-white/40" />
-              <span className="h-2 w-2 rounded-full bg-white/40" />
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={`${project.name} preview`}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <>
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
+                backgroundSize: '32px 32px',
+              }}
+            />
+            <div className="absolute inset-0 grid place-items-center">
+              <div className="relative h-[58%] w-[72%] rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-[1.04]">
+                <div className="flex items-center gap-1.5 border-b border-white/15 px-4 py-3">
+                  <span className="h-2 w-2 rounded-full bg-white/40" />
+                  <span className="h-2 w-2 rounded-full bg-white/40" />
+                  <span className="h-2 w-2 rounded-full bg-white/40" />
+                </div>
+                <div className="space-y-2 p-4">
+                  <div className="h-2 w-1/2 rounded-full bg-white/30" />
+                  <div className="h-2 w-3/4 rounded-full bg-white/20" />
+                  <div className="h-2 w-2/3 rounded-full bg-white/20" />
+                  <div className="mt-3 h-12 rounded-lg bg-white/15" />
+                </div>
+              </div>
             </div>
-            <div className="space-y-2 p-4">
-              <div className="h-2 w-1/2 rounded-full bg-white/30" />
-              <div className="h-2 w-3/4 rounded-full bg-white/20" />
-              <div className="h-2 w-2/3 rounded-full bg-white/20" />
-              <div className="mt-3 h-12 rounded-lg bg-white/15" />
-            </div>
-          </div>
-        </div>
+          </>
+        )}
 
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-7 opacity-0 transition-opacity duration-400 group-hover:opacity-100">
           <p className={cn('max-w-md text-sm leading-relaxed', project.accent)}>
