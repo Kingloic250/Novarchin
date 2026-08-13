@@ -43,8 +43,7 @@ export function PageReveal() {
             transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center"
           >
-            <img src="/logo.png" alt="Novarchin" className="h-12 w-12 dark:hidden" />
-            <img src="/Novarchin%20Logo.png" alt="Novarchin" className="hidden h-12 w-12 dark:block" />
+            <img src="/logo.png" alt="Novarchin" className="h-12 w-12" />
           </motion.div>
         </motion.div>
       )}

@@ -48,8 +48,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link to="/" className="group flex items-center" aria-label="Novarchin home">
-              <img src="/logo.png" alt="Novarchin" className="hidden h-12 w-12 dark:block" />
-              <img src="/Novarchin%20Logo.png" alt="Novarchin" className="h-12 w-12 dark:hidden" />
+              <img src="/logo.png" alt="Novarchin" className="h-12 w-12" />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
               Engineering Africa's digital future through enterprise software, AI,
