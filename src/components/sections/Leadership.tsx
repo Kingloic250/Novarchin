@@ -32,7 +32,7 @@ const team: Member[] = [
   },
   {
     icon: <HardDrive className="h-6 w-6" />,
-    role: 'Head of Engineering',
+    role: 'Software Engineer',
     name: 'Loic Mparabanyi RUDAHIGWA',
     initials: 'LR',
     image: '/loic.jpeg',
