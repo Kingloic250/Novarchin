@@ -53,7 +53,7 @@ function ProjectCard({ project }: { project: Project }) {
           <img
             src={project.image}
             alt={`${project.name} preview`}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
           />
         ) : (
           <>
