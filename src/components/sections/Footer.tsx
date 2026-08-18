@@ -25,6 +25,7 @@ const columns = [
     title: 'Connect',
     links: [
       { label: 'novarchin@gmail.com', href: 'mailto:novarchin@gmail.com' },
+      { label: '+250790109452', href: 'tel:+250790109452' },
     ],
   },
 ];
