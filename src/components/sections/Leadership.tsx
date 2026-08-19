@@ -41,8 +41,8 @@ const team: Member[] = [
   {
     icon: <Megaphone className="h-6 w-6" />,
     role: 'Sales and Marketing Manager',
-    name: 'Akaliza BLESSING',
-    initials: 'AB',
+    name: 'Blessing AKARIZA',
+    initials: 'BA',
     image: '/akaliza.jpeg',
     accent: 'bg-amber-400 text-white dark:text-sand-100',
   },
