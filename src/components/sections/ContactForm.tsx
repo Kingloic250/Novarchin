@@ -14,6 +14,7 @@ const schema = z.object({
   email: z.string().email('Enter a valid email address'),
   projectType: z.string().min(1, 'Select a project type'),
   message: z.string().min(10, 'Tell us a bit more (min 10 characters)'),
+  website: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -70,6 +71,7 @@ const inputClass =
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -78,11 +80,38 @@ export function ContactForm() {
     reset,
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
-  const onSubmit = async () => {
-    await new Promise((r) => setTimeout(r, 1500));
-    setSubmitted(true);
-    reset();
-    setTimeout(() => setSubmitted(false), 8000);
+  const onSubmit = async (values: FormValues) => {
+    setSubmitError(null);
+    const showSuccess = () => {
+      setSubmitted(true);
+      reset();
+      setTimeout(() => setSubmitted(false), 8000);
+    };
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok && res.status === 404 && import.meta.env.DEV) {
+        showSuccess();
+        return;
+      }
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setSubmitError(
+          data?.error ?? 'Something went wrong. Please try again.',
+        );
+        return;
+      }
+      showSuccess();
+    } catch {
+      if (import.meta.env.DEV) {
+        showSuccess();
+        return;
+      }
+      setSubmitError('Network error. Please try again.');
+    }
   };
 
   return (
@@ -189,6 +218,14 @@ export function ContactForm() {
                       className="space-y-5"
                       noValidate
                     >
+                      <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                        className="hidden"
+                        {...register('website')}
+                      />
                       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                         <Field label="Name" error={errors.name?.message} htmlFor="name">
                           <input
@@ -245,6 +282,19 @@ export function ContactForm() {
                           {...register('message')}
                         />
                       </Field>
+
+                      <AnimatePresence>
+                        {submitError && (
+                          <motion.p
+                            initial={{ opacity: 0, y: -4 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0 }}
+                            className="text-sm font-medium text-amber-400"
+                          >
+                            {submitError}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
 
                       <button
                         type="submit"
