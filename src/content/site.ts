@@ -19,7 +19,7 @@ export const ceo = {
   role: 'Founder & CEO',
   photo: '/team/bruce.webp',
   message: [
-    'At Novarchin, we believe technology should solve real business challenges, not create new ones.',
+    'At Novarchin, we believe technology should solve *real business challenges*, not create new ones.',
     'Our mission is to empower organizations across Africa with intelligent digital solutions that improve efficiency, drive innovation, and unlock growth.',
   ],
 }

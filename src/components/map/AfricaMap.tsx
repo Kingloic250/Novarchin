@@ -4,20 +4,19 @@ import { VIEW_H, VIEW_W, cities, dotsPath, hub, project, routePath } from './afr
 
 const vb = { x: 0, y: 0, w: VIEW_W, h: VIEW_H }
 
-// Label direction per city so the tightly clustered Great Lakes cities never overlap.
-const LABEL_POS: Record<string, 'top' | 'bottom' | 'left' | 'right'> = {
-  rw: 'left',
-  ug: 'top',
-  ke: 'right',
-  bi: 'bottom',
-  tz: 'right',
-  cd: 'left',
-}
-const LABEL_TRANSFORM = {
-  top: 'translate(-50%, calc(-100% - 12px))',
-  bottom: 'translate(-50%, 12px)',
-  left: 'translate(calc(-100% - 12px), -50%)',
-  right: 'translate(12px, -50%)',
+// Hand-placed label offsets so the tightly clustered East African cities never overlap.
+const TOP = 'translate(-50%, calc(-100% - 12px))'
+const BOTTOM = 'translate(-50%, 12px)'
+const LEFT = 'translate(calc(-100% - 12px), -50%)'
+const LABEL_TRANSFORM: Record<string, string> = {
+  rw: LEFT,
+  ug: 'translate(12px, -85%)', // right, nudged up clear of the Nairobi pin
+  ke: BOTTOM,
+  bi: 'translate(-80%, 12px)', // below, shifted left clear of Nairobi's label
+  tz: BOTTOM,
+  cd: LEFT,
+  ss: TOP,
+  so: TOP,
 }
 
 /**
@@ -148,7 +147,7 @@ export function AfricaMap({
                   ? 'border-accent/40 bg-brand text-white'
                   : 'hidden border-line bg-elevated/80 text-ink-2 sm:block'
               }`}
-              style={{ left: `${left}%`, top: `${top}%`, transform: LABEL_TRANSFORM[LABEL_POS[c.id]] }}
+              style={{ left: `${left}%`, top: `${top}%`, transform: LABEL_TRANSFORM[c.id] ?? TOP }}
             >
               {c.city}
               {isHub && <span className="ml-1 opacity-70">· HQ</span>}

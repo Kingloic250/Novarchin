@@ -72,6 +72,8 @@ export const cities: City[] = [
   { id: 'tz', city: 'Dar es Salaam', country: 'Tanzania', lonlat: [39.28, -6.79] },
   { id: 'bi', city: 'Bujumbura', country: 'Burundi', lonlat: [29.36, -3.38] },
   { id: 'cd', city: 'Kinshasa', country: 'DR Congo', lonlat: [15.27, -4.44] },
+  { id: 'ss', city: 'Juba', country: 'South Sudan', lonlat: [31.58, 4.85] },
+  { id: 'so', city: 'Mogadishu', country: 'Somalia', lonlat: [45.34, 2.04] },
 ]
 
 /** Curved route from the hub, bowed "upwards" like a flight path. */

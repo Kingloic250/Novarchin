@@ -42,7 +42,7 @@ export function Navbar() {
       <nav
         aria-label="Main"
         className={`liquid-glass mx-auto flex h-14 max-w-[1240px] items-center justify-between rounded-full pl-5 pr-2 ${
-          scrolled || open ? 'is-raised' : ''
+          scrolled || open ? 'is-raised' : 'is-clear'
         }`}
       >
         <Link to="/" className="text-[18px] text-ink" aria-label="Novarchin home">

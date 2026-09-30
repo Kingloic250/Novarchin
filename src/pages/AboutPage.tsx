@@ -1,4 +1,4 @@
-import { Quote, User } from 'lucide-react'
+import { User } from 'lucide-react'
 import { PageHero } from '../components/ui/PageHero'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { Reveal } from '../components/ui/Reveal'
@@ -29,10 +29,29 @@ export default function AboutPage() {
           <Reveal>
             <div className="card relative mx-auto max-w-5xl overflow-hidden p-8 md:p-16">
               <div aria-hidden className="glow -right-40 -top-40 size-[520px]" />
-              <Quote className="relative size-10 text-accent" aria-hidden />
-              <blockquote className="mt-8 space-y-6">
-                {ceo.message.map((p) => (
-                  <p key={p} className="relative font-serif text-[30px] italic leading-[1.2] md:text-[44px]">{p}</p>
+              <span aria-hidden className="relative block h-16 font-quote text-[120px] leading-none text-accent md:h-20 md:text-[150px]">
+                &ldquo;
+              </span>
+              <blockquote className="relative mt-4 space-y-7 font-quote font-light [font-optical-sizing:auto]">
+                {ceo.message.map((p, i) => (
+                  <p
+                    key={p}
+                    className={
+                      i === 0
+                        ? 'text-balance text-[30px] leading-[1.18] tracking-[-0.025em] text-ink md:text-[46px]'
+                        : 'max-w-3xl text-pretty text-[20px] leading-[1.5] tracking-[-0.01em] text-ink-2 md:text-[26px]'
+                    }
+                  >
+                    {p.split(/\*(.+?)\*/).map((part, j) =>
+                      j % 2 ? (
+                        <em key={j} className="italic text-accent">
+                          {part}
+                        </em>
+                      ) : (
+                        part
+                      ),
+                    )}
+                  </p>
                 ))}
               </blockquote>
               <div className="relative mt-10 flex items-center gap-4">
