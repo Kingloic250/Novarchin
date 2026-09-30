@@ -25,8 +25,8 @@ export const ceo = {
 }
 
 export const contact = {
-  email: '', // TODO
-  phone: '', // TODO
+  email: 'novarchin@gmail.com',
+  phone: '+250 790 109 452',
   address: '', // TODO
   linkedin: '', // TODO
   website: '', // TODO
