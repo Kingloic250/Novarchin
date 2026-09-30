@@ -1,6 +1,6 @@
 import { PageHero } from '../components/ui/PageHero'
 import { SectionHeader } from '../components/ui/SectionHeader'
-import { CaseStudyCarousel } from '../components/sections/CaseStudyCarousel'
+import { ProjectShowcase } from '../components/sections/Projects'
 import { AdvantageFlow } from '../components/sections/AdvantageFlow'
 import { FeatureGrid } from '../components/sections/FeatureGrid'
 import { CTA } from '../components/sections/CTA'
@@ -13,12 +13,12 @@ export default function WorkPage() {
     <>
       <PageHero
         eyebrow="Our work"
-        title="Real challenges. *Measurable* impact."
-        intro="A look at how we help organizations across Africa modernize, automate and grow."
+        title="Real products. *Real* impact."
+        intro="Products we've designed, engineered and launched, from digital wallets to university platforms."
       />
 
       <section className="container-x pb-24 md:pb-32">
-        <CaseStudyCarousel />
+        <ProjectShowcase />
       </section>
 
       <section className="invert-band py-24 md:py-32">

@@ -116,40 +116,37 @@ export const advantage = [
   'Measurable Business Impact',
 ]
 
-export interface CaseStudy {
-  title: string
-  sector: string
-  challenge: string
-  solution: string
+export interface Project {
+  name: string
+  category: string
+  tagline: string
+  description: string
   technologies: string[]
-  impact: string
+  /** Base path; the site loads `${image}-720.webp` and `${image}-1360.webp`. */
+  image: string
+  href: string
 }
 
-// TODO: replace challenge / solution / technologies / impact with real project details.
-export const caseStudies: CaseStudy[] = [
+export const projects: Project[] = [
   {
-    title: 'Digital Banking Platform',
-    sector: 'Banking & FinTech',
-    challenge: 'Details coming soon.',
-    solution: 'Details coming soon.',
-    technologies: [],
-    impact: 'Details coming soon.',
+    name: 'Movara',
+    category: 'FinTech',
+    tagline: 'A digital wallet for everyday money.',
+    description:
+      'A modern digital wallet platform that makes everyday money management simple, secure and instant. Send, receive, save and track finances from one seamless app, for individuals and businesses.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    image: '/work/movara',
+    href: 'https://movara-xi.vercel.app/',
   },
   {
-    title: 'Hospital Management System',
-    sector: 'Healthcare',
-    challenge: 'Details coming soon.',
-    solution: 'Details coming soon.',
-    technologies: [],
-    impact: 'Details coming soon.',
-  },
-  {
-    title: 'NGO Platform',
-    sector: 'NGOs',
-    challenge: 'Details coming soon.',
-    solution: 'Details coming soon.',
-    technologies: [],
-    impact: 'Details coming soon.',
+    name: 'CoreEd',
+    category: 'EdTech',
+    tagline: 'One platform to run a university.',
+    description:
+      'A full-stack university management platform that brings students, lecturers, courses, departments, attendance, grades and fees into one role-based web app, secured with JWT authentication and granular permissions.',
+    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    image: '/work/coreed',
+    href: 'https://core-ed-ten.vercel.app/',
   },
 ]
 

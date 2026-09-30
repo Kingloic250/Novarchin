@@ -3,7 +3,7 @@ import { ServicesBento } from '../components/sections/ServicesBento'
 import { TechMarquee } from '../components/sections/TechMarquee'
 import { FeatureGrid } from '../components/sections/FeatureGrid'
 import { AdvantageFlow } from '../components/sections/AdvantageFlow'
-import { CaseStudyCarousel } from '../components/sections/CaseStudyCarousel'
+import { ProjectGrid } from '../components/sections/Projects'
 import { Coverage } from '../components/sections/Coverage'
 import { CTA } from '../components/sections/CTA'
 import { SectionHeader } from '../components/ui/SectionHeader'
@@ -112,10 +112,10 @@ export default function HomePage() {
       {/* Work */}
       <section className="container-x py-24 md:py-32">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeader align="left" eyebrow="Selected work" title="Solutions that *ship.*" />
+          <SectionHeader align="left" eyebrow="Selected work" title="Products we've *shipped.*" />
           <Button to="/work" variant="link">View all work</Button>
         </div>
-        <CaseStudyCarousel />
+        <ProjectGrid />
       </section>
 
       <CTA />
