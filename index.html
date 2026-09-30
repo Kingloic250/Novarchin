@@ -1,47 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      (function () {
-        try {
-          var t = localStorage.getItem('novarchin-theme');
-          if (t !== 'light') t = 'dark';
-          document.documentElement.classList.toggle('dark', t === 'dark');
-        } catch (e) {
-          document.documentElement.classList.add('dark');
-        }
-      })();
-    </script>
-    <link rel="icon" type="image/png" href="/logo.png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="/logo.png" sizes="180x180" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#331715" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Novarchin — Engineering Africa's Digital Future</title>
-    <meta
-      name="description"
-      content="Novarchin delivers enterprise software, AI, cloud, and cybersecurity solutions that empower organizations across Africa to innovate, automate, and grow."
-    />
+    <meta name="description" content="Novarchin builds secure, scalable enterprise software, AI, cloud and cybersecurity solutions for businesses, governments and NGOs across Africa." />
+    <meta name="theme-color" content="#070506" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Novarchin — Engineering Africa's Digital Future" />
-    <meta
-      property="og:description"
-      content="Enterprise software, AI, cloud, and cybersecurity solutions for Africa's digital transformation."
-    />
-    <meta property="og:image" content="/Novarchin.png" />
+    <meta property="og:description" content="Enterprise software, AI, cloud, cybersecurity and digital transformation for Africa." />
+    <meta property="og:image" content="/og.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Novarchin — Engineering Africa's Digital Future" />
-    <meta
-      name="twitter:description"
-      content="Enterprise software, AI, cloud, and cybersecurity solutions for Africa's digital transformation."
-    />
-    <meta name="twitter:image" content="/Novarchin.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=Instrument+Serif:ital@1&display=swap"
     />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark';
+        } catch (e) {
+          /* keep dark default */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

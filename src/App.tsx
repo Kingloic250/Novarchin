@@ -1,14 +1,19 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { RootLayout } from '@/pages/RootLayout';
-import { HomePage } from '@/pages/HomePage';
-import { AboutPage } from '@/pages/AboutPage';
-import { ServicesPage } from '@/pages/ServicesPage';
-import { WorkPage } from '@/pages/WorkPage';
-import { ContactPage } from '@/pages/ContactPage';
+import { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
+import { RootLayout } from './components/layout/RootLayout'
+import HomePage from './pages/HomePage'
+
+// Home ships in the main bundle; other pages load on demand.
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const WorkPage = lazy(() => import('./pages/WorkPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <MotionConfig reducedMotion="user">
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
@@ -16,9 +21,9 @@ export default function App() {
           <Route path="services" element={<ServicesPage />} />
           <Route path="work" element={<WorkPage />} />
           <Route path="contact" element={<ContactPage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
-  );
+    </MotionConfig>
+  )
 }

@@ -1,37 +1,26 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react'
 
-export type Theme = 'dark' | 'light';
+export type Theme = 'light' | 'dark'
 
-const STORAGE_KEY = 'novarchin-theme';
-
-function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'dark';
-  try {
-    return localStorage.getItem(STORAGE_KEY) === 'light' ? 'light' : 'dark';
-  } catch {
-    return 'dark';
-  }
+function current(): Theme {
+  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
 }
 
+/** Dark is the designed default; the toggle flips to light and remembers it. */
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>(current)
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+  const toggle = useCallback(() => {
+    const next: Theme = current() === 'dark' ? 'light' : 'dark'
+    document.documentElement.dataset.theme = next
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#070506' : '#fbf8f6')
     try {
-      localStorage.setItem(STORAGE_KEY, theme);
+      localStorage.setItem('theme', next)
     } catch {
       /* storage unavailable */
     }
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) {
-      meta.setAttribute('content', theme === 'dark' ? '#331715' : '#FAFAF7');
-    }
-  }, [theme]);
+    setTheme(next)
+  }, [])
 
-  const toggleTheme = useCallback(() => {
-    setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
-  }, []);
-
-  return { theme, toggleTheme };
+  return { theme, toggle }
 }

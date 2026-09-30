@@ -1,118 +1,124 @@
-import { Link } from 'react-router-dom';
-import { Code2, Cpu, Shield, ArrowRight } from 'lucide-react';
-import { Hero } from '@/components/hero/Hero';
-import { Stats } from '@/components/sections/Stats';
-import { SectionReveal, RevealItem } from '@/components/SectionReveal';
-import { RevealWords } from '@/components/RevealWords';
-import { TiltCard } from '@/components/TiltCard';
+import { Hero } from '../components/sections/Hero'
+import { ServicesBento } from '../components/sections/ServicesBento'
+import { TechMarquee } from '../components/sections/TechMarquee'
+import { FeatureGrid } from '../components/sections/FeatureGrid'
+import { AdvantageFlow } from '../components/sections/AdvantageFlow'
+import { CaseStudyCarousel } from '../components/sections/CaseStudyCarousel'
+import { Coverage } from '../components/sections/Coverage'
+import { CTA } from '../components/sections/CTA'
+import { SectionHeader } from '../components/ui/SectionHeader'
+import { ScrollText } from '../components/ui/ScrollText'
+import { Button } from '../components/ui/Button'
+import { Reveal } from '../components/ui/Reveal'
+import { Icon } from '../components/ui/Icon'
+import { company, industries, whyUs } from '../content/site'
+import { usePageTitle } from '../hooks/usePageTitle'
 
-const featuredServices = [
-  {
-    icon: <Code2 className="h-6 w-6" />,
-    title: 'Custom Software Development',
-    description: 'Tailored enterprise applications designed to solve your unique business challenges with clean, scalable code.',
-  },
-  {
-    icon: <Cpu className="h-6 w-6" />,
-    title: 'AI & Automation',
-    description: 'Intelligent automation, machine learning models, and AI-powered tools to transform your operations.',
-  },
-  {
-    icon: <Shield className="h-6 w-6" />,
-    title: 'Cybersecurity',
-    description: 'Proactive security assessments, threat monitoring, and compliance solutions to protect your business.',
-  },
-];
-
-function ServicesPreview() {
-  return (
-    <section id="services-preview" className="section-glow-left relative py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <SectionReveal className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <RevealItem className="max-w-2xl">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-600 dark:text-amber-300">
-              What We Do
-            </span>
-            <RevealWords
-              text="Solutions engineered for real business impact."
-              as="h2"
-              className="mt-4 font-display text-display font-bold text-gradient"
-            />
-          </RevealItem>
-          <RevealItem>
-            <Link
-              to="/services"
-              className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-sand-300 bg-sand-50 px-5 py-2.5 text-sm font-medium text-ink-soft transition-colors hover:border-amber-400 hover:text-amber-400"
-            >
-              View all services
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </RevealItem>
-        </SectionReveal>
-
-        <SectionReveal className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {featuredServices.map((s) => (
-            <RevealItem key={s.title}>
-              <TiltCard className="group relative h-full rounded-4xl border border-sand-300 bg-sand-50 p-7 shadow-soft">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-sand-300 bg-sand-50 text-amber-400 shadow-glow transition-transform duration-300 group-hover:scale-110">
-                  {s.icon}
-                </span>
-                <h3 className="relative mt-5 font-display text-xl font-semibold text-ink">
-                  {s.title}
-                </h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-ink-muted">
-                  {s.description}
-                </p>
-              </TiltCard>
-            </RevealItem>
-          ))}
-        </SectionReveal>
-      </div>
-    </section>
-  );
-}
-
-function CTA() {
-  return (
-    <section className="section-glow-left relative py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <SectionReveal className="relative overflow-hidden rounded-5xl border border-sand-300 bg-sand-50 p-10 text-center shadow-soft sm:p-16">
-          <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-amber-400/10 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-amber-400/10 blur-3xl" />
-          <RevealItem>
-            <RevealWords
-              text="Let's build something transformative."
-              as="h2"
-              className="mx-auto max-w-2xl font-display text-display font-bold text-gradient"
-            />
-          </RevealItem>
-          <RevealItem>
-            <p className="mx-auto mt-4 max-w-xl text-ink-muted">
-              Tell us about your project and our team will respond within one business day.
-            </p>
-          </RevealItem>
-          <RevealItem>
-            <Link
-              to="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-medium text-white shadow-lift transition-all hover:bg-amber-500 dark:text-sand-100"
-            >
-              Start a Project
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </RevealItem>
-        </SectionReveal>
-      </div>
-    </section>
-  );
-}
-
-export function HomePage() {
+export default function HomePage() {
+  usePageTitle()
   return (
     <>
       <Hero />
-      <Stats />
-      <ServicesPreview />
+
+      {/* Statement — inverted band */}
+      <section className="invert-band relative overflow-hidden py-28 md:py-40">
+        <div aria-hidden className="glow-soft right-[-10%] top-[-30%] size-[600px]" />
+        <div className="container-x relative">
+          <Reveal y={12}>
+            <p className="eyebrow mb-8">Who we are</p>
+          </Reveal>
+          <ScrollText
+            text={company.overview}
+            className="headline max-w-5xl text-[30px] leading-[1.18] sm:text-[40px] md:text-[52px]"
+          />
+          <div className="mt-12">
+            <Button to="/about" variant="link">More about Novarchin</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="container-x py-24 md:py-32">
+        <div className="mb-14 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <SectionHeader
+            align="left"
+            eyebrow="What we do"
+            title="Everything you need to go *digital.*"
+            intro="From strategy to launch and beyond: one partner for software, AI, cloud and security."
+          />
+          <Button to="/services" variant="secondary">All ten services</Button>
+        </div>
+        <ServicesBento limit={5} />
+      </section>
+
+      {/* Tech */}
+      <section className="pb-24 md:pb-32">
+        <Reveal className="container-x mb-10 text-center">
+          <p className="text-[14px] text-ink-3">Built with the world's most trusted technologies</p>
+        </Reveal>
+        <TechMarquee />
+      </section>
+
+      <Coverage />
+
+      {/* Why us */}
+      <section className="on-surface border-y border-line bg-surface py-24 md:py-32">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow="Why Novarchin"
+            title="Built to *last.* Built to scale."
+            intro="Global engineering standards, combined with a deep understanding of African markets."
+          />
+          <div className="mt-14 md:mt-20">
+            <FeatureGrid items={whyUs} />
+          </div>
+        </div>
+      </section>
+
+      {/* Advantage */}
+      <section className="container-x py-24 md:py-32">
+        <SectionHeader
+          eyebrow="Our advantage"
+          title="From challenge to *measurable* impact."
+          intro="Every engagement follows one path: understand the problem, design the right solution, prove the result."
+        />
+        <div className="mt-16 md:mt-24">
+          <AdvantageFlow />
+        </div>
+      </section>
+
+      {/* Industries — inverted band */}
+      <section className="invert-band py-24 md:py-32">
+        <div className="container-x">
+          <SectionHeader eyebrow="Industries" title="Trusted across *sectors.*" />
+          <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+            {industries.map((it, i) => (
+              <Reveal key={it.title} delay={(i % 4) * 0.05}>
+                <div className="card group flex h-full flex-col items-start gap-5 p-5 transition-transform duration-500 ease-out-expo hover:-translate-y-1 md:p-6">
+                  <div className="orb size-11">
+                    <Icon name={it.icon} className="size-5" />
+                  </div>
+                  <div>
+                    <p className="font-display text-[16px] font-semibold tracking-[-0.02em] md:text-[18px]">{it.title}</p>
+                    <p className="mt-1 hidden text-[14px] text-ink-2 sm:block">{it.description}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Work */}
+      <section className="container-x py-24 md:py-32">
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionHeader align="left" eyebrow="Selected work" title="Solutions that *ship.*" />
+          <Button to="/work" variant="link">View all work</Button>
+        </div>
+        <CaseStudyCarousel />
+      </section>
+
       <CTA />
     </>
-  );
+  )
 }
