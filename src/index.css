@@ -30,6 +30,20 @@
   --beam: rgba(223, 97, 121, 0.55);
   --dot: rgba(255, 255, 255, 0.2);
   --logo: #f5f1f2;
+  --lg-tint-top: rgba(255, 255, 255, 0.1);
+  --lg-tint: rgba(255, 255, 255, 0.04);
+  --lg-tint-top-raised: rgba(36, 27, 29, 0.8);
+  --lg-tint-raised: rgba(16, 11, 13, 0.74);
+  --lg-highlight: rgba(255, 255, 255, 0.22);
+  --lg-lowlight: rgba(255, 255, 255, 0.04);
+  --lg-rim: rgba(255, 255, 255, 0.45);
+  --lg-rim-soft: rgba(223, 97, 121, 0.35);
+  --lg-sheen: rgba(255, 255, 255, 0.14);
+  --lg-glow: rgba(150, 24, 48, 0.55);
+  --lg-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.6);
+  --lg-shadow-raised: 0 14px 44px -12px rgba(0, 0, 0, 0.75);
+  --lg-pill: rgba(255, 255, 255, 0.1);
+  --lg-pill-edge: rgba(255, 255, 255, 0.12);
   color-scheme: dark;
 }
 
@@ -55,6 +69,20 @@
   --beam: rgba(150, 24, 48, 0.35);
   --dot: rgba(26, 17, 20, 0.16);
   --logo: #5c0e1b;
+  --lg-tint-top: rgba(255, 255, 255, 0.7);
+  --lg-tint: rgba(255, 255, 255, 0.45);
+  --lg-tint-top-raised: rgba(255, 255, 255, 0.82);
+  --lg-tint-raised: rgba(255, 255, 255, 0.62);
+  --lg-highlight: rgba(255, 255, 255, 0.95);
+  --lg-lowlight: rgba(26, 17, 20, 0.06);
+  --lg-rim: rgba(255, 255, 255, 1);
+  --lg-rim-soft: rgba(92, 14, 27, 0.18);
+  --lg-sheen: rgba(255, 255, 255, 0.7);
+  --lg-glow: rgba(150, 24, 48, 0.12);
+  --lg-shadow: 0 8px 30px -12px rgba(92, 14, 27, 0.22);
+  --lg-shadow-raised: 0 14px 40px -12px rgba(92, 14, 27, 0.3);
+  --lg-pill: rgba(255, 255, 255, 0.85);
+  --lg-pill-edge: rgba(26, 17, 20, 0.06);
   color-scheme: light;
 }
 
@@ -174,6 +202,70 @@
     background: var(--nav);
     backdrop-filter: saturate(160%) blur(18px);
     -webkit-backdrop-filter: saturate(160%) blur(18px);
+  }
+
+  /*
+   * Liquid glass: frosted, saturated backdrop + specular top sheen + a rim
+   * that catches light top-left and fades bottom-right. Always visible.
+   */
+  .liquid-glass {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(180deg, var(--lg-tint-top), var(--lg-tint));
+    -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(1.04);
+    backdrop-filter: blur(24px) saturate(190%) brightness(1.04);
+    box-shadow:
+      inset 0 1px 0 var(--lg-highlight),
+      inset 0 -1px 0 var(--lg-lowlight),
+      inset 0 -14px 28px -20px var(--lg-glow),
+      var(--lg-shadow);
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+  }
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--lg-rim) 0%, transparent 38%, transparent 62%, var(--lg-rim-soft) 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(120% 70% at 30% -25%, var(--lg-sheen), transparent 60%);
+    pointer-events: none;
+  }
+  .liquid-glass.is-raised {
+    background: linear-gradient(180deg, var(--lg-tint-top-raised), var(--lg-tint-raised));
+    box-shadow:
+      inset 0 1px 0 var(--lg-highlight),
+      inset 0 -1px 0 var(--lg-lowlight),
+      inset 0 -14px 28px -20px var(--lg-glow),
+      var(--lg-shadow-raised);
+  }
+  /* Browsers without backdrop-filter get a solid, still-readable bar. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .liquid-glass,
+    .liquid-glass.is-raised {
+      background: var(--elevated);
+    }
+  }
+
+  /* Smaller glass lens for the active nav item. */
+  .liquid-glass-pill {
+    background: var(--lg-pill);
+    box-shadow:
+      inset 0 1px 0 var(--lg-highlight),
+      inset 0 0 0 1px var(--lg-pill-edge),
+      0 2px 10px -2px rgba(0, 0, 0, 0.25);
   }
 
   .no-scrollbar {

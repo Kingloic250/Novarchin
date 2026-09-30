@@ -41,8 +41,8 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
       <nav
         aria-label="Main"
-        className={`mx-auto flex h-14 max-w-[1240px] items-center justify-between rounded-full border pl-5 pr-2 transition-all duration-500 ease-out-expo ${
-          scrolled || open ? 'glass border-line shadow-[var(--shadow-md)]' : 'border-transparent'
+        className={`liquid-glass mx-auto flex h-14 max-w-[1240px] items-center justify-between rounded-full pl-5 pr-2 ${
+          scrolled || open ? 'is-raised' : ''
         }`}
       >
         <Link to="/" className="text-[18px] text-ink" aria-label="Novarchin home">
@@ -57,7 +57,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-elevated-2 ring-1 ring-line"
+                      className="liquid-glass-pill absolute inset-0 rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -112,7 +112,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98, transition: { duration: 0.2 } }}
             transition={{ duration: 0.4, ease: easeOut }}
-            className="glass mx-auto mt-2 max-w-[1240px] origin-top overflow-hidden rounded-[28px] border border-line p-3 shadow-[var(--shadow-lg)] md:hidden"
+            className="liquid-glass is-raised mx-auto mt-2 max-w-[1240px] origin-top overflow-hidden rounded-[28px] p-3 md:hidden"
           >
             <ul className="flex flex-col">
               {[{ to: '/', label: 'Home' }, ...navLinks].map((l, i) => (
@@ -127,7 +127,7 @@ export function Navbar() {
                     end={l.to === '/'}
                     className={({ isActive }) =>
                       `flex min-h-12 items-center rounded-2xl px-4 font-display text-[24px] font-semibold tracking-[-0.03em] ${
-                        isActive ? 'bg-elevated-2 text-ink' : 'text-ink-2'
+                        isActive ? 'liquid-glass-pill text-ink' : 'text-ink-2'
                       }`
                     }
                   >
