@@ -15,9 +15,9 @@ export const company = {
 }
 
 export const ceo = {
-  name: 'Rutagengwa Bruce',
+  name: 'Bruce Rutagengwa',
   role: 'Founder & CEO',
-  photo: '', // TODO: add /public/team/bruce.jpg and set '/team/bruce.jpg'
+  photo: '/team/bruce.webp',
   message: [
     'At Novarchin, we believe technology should solve real business challenges, not create new ones.',
     'Our mission is to empower organizations across Africa with intelligent digital solutions that improve efficiency, drive innovation, and unlock growth.',
@@ -159,13 +159,11 @@ export interface Member {
   photo: string
 }
 
-// TODO: add names and photos for each role.
 export const team: Member[] = [
   { name: ceo.name, role: 'Chief Executive Officer', photo: ceo.photo },
-  { name: '', role: 'Chief Technology Officer', photo: '' },
-  { name: '', role: 'Head of Engineering', photo: '' },
-  { name: '', role: 'Operations Manager', photo: '' },
-  { name: '', role: 'Business Development', photo: '' },
+  { name: 'Brian Ganza Gisagara', role: 'Chief Technology Officer', photo: '/team/brian.webp' },
+  { name: 'Loic Mparabanyi Rudahigwa', role: 'Software Engineer', photo: '/team/loic.webp' },
+  { name: 'Blessing Akariza', role: 'Sales & Marketing Manager', photo: '/team/akaliza.webp' },
 ]
 
 export const csr =

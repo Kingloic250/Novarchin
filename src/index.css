@@ -29,6 +29,7 @@
   --glow-soft: rgba(92, 14, 27, 0.45);
   --beam: rgba(223, 97, 121, 0.55);
   --dot: rgba(255, 255, 255, 0.2);
+  --logo: #f5f1f2;
   color-scheme: dark;
 }
 
@@ -53,6 +54,7 @@
   --glow-soft: rgba(92, 14, 27, 0.14);
   --beam: rgba(150, 24, 48, 0.35);
   --dot: rgba(26, 17, 20, 0.16);
+  --logo: #5c0e1b;
   color-scheme: light;
 }
 

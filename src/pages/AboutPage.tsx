@@ -75,16 +75,19 @@ export default function AboutPage() {
       {/* Leadership */}
       <section className="container-x py-24 md:py-32">
         <SectionHeader eyebrow="Leadership" title="The people behind *Novarchin.*" />
-        <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-14 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
           {team.map((m, i) => (
             <Reveal key={m.role} delay={i * 0.07}>
-              <div className="group text-center">
-                <div className="card mx-auto aspect-[4/5] w-full overflow-hidden rounded-[24px]">
+              <figure className="group">
+                <div className="card relative aspect-[4/5] w-full overflow-hidden rounded-[24px]">
                   {m.photo ? (
                     <img
                       src={m.photo}
-                      alt={m.name}
+                      alt={`Portrait of ${m.name}`}
+                      width={800}
+                      height={1000}
                       loading="lazy"
+                      decoding="async"
                       className="size-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
                     />
                   ) : (
@@ -92,10 +95,17 @@ export default function AboutPage() {
                       <User className="size-12 text-ink-3" strokeWidth={1.25} aria-hidden />
                     </div>
                   )}
+                  {/* Wine wash that rises on hover */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#5c0e1b]/70 via-[#5c0e1b]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
                 </div>
-                <p className="mt-4 font-semibold">{m.name || 'Coming soon'}</p>
-                <p className="text-[15px] text-ink-2">{m.role}</p>
-              </div>
+                <figcaption className="mt-4">
+                  <p className="font-display text-[17px] font-semibold tracking-[-0.02em] md:text-[19px]">{m.name || 'Coming soon'}</p>
+                  <p className="mt-0.5 text-[14px] text-ink-2 md:text-[15px]">{m.role}</p>
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>
