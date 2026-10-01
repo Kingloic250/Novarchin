@@ -189,7 +189,7 @@ function RwandaFlag({ x, y, uid, reduce }: { x: number; y: number; uid: string; 
       <clipPath id={`rw-${uid}`}>
         <rect x={fx} y={top} width={w} height={h} rx={1.6} />
       </clipPath>
-      <line x1={x} y1={y - 8} x2={x} y2={top - 1} stroke="var(--text-2)" strokeWidth={1.1} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+      <line x1={x} y1={y - 8} x2={x} y2={top - 1} stroke="#000" strokeWidth={1.5} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
       <g clipPath={`url(#rw-${uid})`}>
         <rect x={fx} y={top} width={w} height={h * 0.5} fill="#00A1DE" />
         <rect x={fx} y={top + h * 0.5} width={w} height={h * 0.25} fill="#FAD201" />
