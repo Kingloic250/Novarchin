@@ -57,23 +57,33 @@ function buildDots() {
 
 export const dotsPath = buildDots()
 
+export type Region = 'East Africa' | 'West Africa' | 'North Africa' | 'Central & Southern Africa'
+
+export const regions: Region[] = ['East Africa', 'West Africa', 'North Africa', 'Central & Southern Africa']
+
 export interface City {
   id: string
   city: string
   country: string
+  region: Region
   lonlat: LonLat
 }
 
-export const hub: City = { id: 'rw', city: 'Kigali', country: 'Rwanda', lonlat: [30.06, -1.95] }
+export const hub: City = { id: 'rw', city: 'Kigali', country: 'Rwanda', region: 'East Africa', lonlat: [30.06, -1.95] }
 
 export const cities: City[] = [
-  { id: 'ke', city: 'Nairobi', country: 'Kenya', lonlat: [36.82, -1.29] },
-  { id: 'ug', city: 'Kampala', country: 'Uganda', lonlat: [32.58, 0.35] },
-  { id: 'tz', city: 'Dar es Salaam', country: 'Tanzania', lonlat: [39.28, -6.79] },
-  { id: 'bi', city: 'Bujumbura', country: 'Burundi', lonlat: [29.36, -3.38] },
-  { id: 'cd', city: 'Kinshasa', country: 'DR Congo', lonlat: [15.27, -4.44] },
-  { id: 'ss', city: 'Juba', country: 'South Sudan', lonlat: [31.58, 4.85] },
-  { id: 'so', city: 'Mogadishu', country: 'Somalia', lonlat: [45.34, 2.04] },
+  { id: 'ke', city: 'Nairobi', country: 'Kenya', region: 'East Africa', lonlat: [36.82, -1.29] },
+  { id: 'ug', city: 'Kampala', country: 'Uganda', region: 'East Africa', lonlat: [32.58, 0.35] },
+  { id: 'tz', city: 'Dar es Salaam', country: 'Tanzania', region: 'East Africa', lonlat: [39.28, -6.79] },
+  { id: 'bi', city: 'Bujumbura', country: 'Burundi', region: 'East Africa', lonlat: [29.36, -3.38] },
+  { id: 'cd', city: 'Kinshasa', country: 'DR Congo', region: 'Central & Southern Africa', lonlat: [15.27, -4.44] },
+  { id: 'ss', city: 'Juba', country: 'South Sudan', region: 'East Africa', lonlat: [31.58, 4.85] },
+  { id: 'so', city: 'Mogadishu', country: 'Somalia', region: 'East Africa', lonlat: [45.34, 2.04] },
+  { id: 'ng', city: 'Lagos', country: 'Nigeria', region: 'West Africa', lonlat: [3.38, 6.52] },
+  { id: 'gh', city: 'Accra', country: 'Ghana', region: 'West Africa', lonlat: [-0.19, 5.6] },
+  { id: 'eg', city: 'Cairo', country: 'Egypt', region: 'North Africa', lonlat: [31.24, 30.04] },
+  { id: 'ma', city: 'Casablanca', country: 'Morocco', region: 'North Africa', lonlat: [-7.59, 33.57] },
+  { id: 'za', city: 'Johannesburg', country: 'South Africa', region: 'Central & Southern Africa', lonlat: [28.05, -26.2] },
 ]
 
 /** Curved route from the hub, bowed "upwards" like a flight path. */

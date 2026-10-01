@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { MapPin } from 'lucide-react'
 import { AfricaMap } from '../map/AfricaMap'
-import { cities, hub } from '../map/africa'
+import { cities, hub, regions } from '../map/africa'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Reveal } from '../ui/Reveal'
 
-/** Interactive East Africa coverage: hover or focus a market to light up its route. */
+/** Interactive pan-African coverage: hover or focus a market to light up its route. */
 export function Coverage() {
   const [active, setActive] = useState<string | null>(null)
 
@@ -17,41 +17,51 @@ export function Coverage() {
           <SectionHeader
             align="left"
             eyebrow="Where we work"
-            title="Rooted in *Kigali*. Built for East Africa."
-            intro="From our headquarters in Rwanda we design, build and support digital products for organizations across the region."
+            title="Rooted in *Kigali*. Built for Africa."
+            intro="From our headquarters in Rwanda we design, build and support digital products for organizations across the continent."
           />
           <Reveal delay={0.2}>
-            <ul className="mt-10 grid grid-cols-2 gap-2">
-              <li>
-                <div className="flex h-full items-center gap-3 rounded-2xl border border-accent/30 bg-brand/15 px-4 py-3">
-                  <span className="grid size-9 place-items-center rounded-full bg-brand text-white">
-                    <MapPin className="size-4" aria-hidden />
-                  </span>
-                  <span>
-                    <span className="block font-medium">{hub.city}, {hub.country}</span>
-                    <span className="block text-[13px] text-ink-2">Headquarters</span>
-                  </span>
+            <div className="mt-10 flex items-center gap-3 rounded-2xl border border-accent/30 bg-brand/15 px-4 py-3">
+              <span className="grid size-9 place-items-center rounded-full bg-brand text-white">
+                <MapPin className="size-4" aria-hidden />
+              </span>
+              <span>
+                <span className="block font-medium">{hub.city}, {hub.country}</span>
+                <span className="block text-[13px] text-ink-2">Headquarters</span>
+              </span>
+            </div>
+
+            <div className="mt-6 space-y-5">
+              {regions.map((r) => (
+                <div key={r}>
+                  <p className="mb-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-ink-3">{r}</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {cities
+                      .filter((c) => c.region === r)
+                      .map((c) => (
+                        <li key={c.id}>
+                          <button
+                            onMouseEnter={() => setActive(c.id)}
+                            onMouseLeave={() => setActive(null)}
+                            onFocus={() => setActive(c.id)}
+                            onBlur={() => setActive(null)}
+                            onClick={() => setActive((a) => (a === c.id ? null : c.id))}
+                            aria-pressed={active === c.id}
+                            title={c.city}
+                            className={`inline-flex min-h-10 items-center rounded-full border px-4 text-[14px] font-medium transition-all duration-300 ${
+                              active === c.id
+                                ? 'border-accent/50 bg-brand text-white'
+                                : 'border-line bg-elevated text-ink-2 hover:border-line-strong hover:text-ink'
+                            }`}
+                          >
+                            {c.country}
+                          </button>
+                        </li>
+                      ))}
+                  </ul>
                 </div>
-              </li>
-              {cities.map((c) => (
-                <li key={c.id}>
-                  <button
-                    onMouseEnter={() => setActive(c.id)}
-                    onMouseLeave={() => setActive(null)}
-                    onFocus={() => setActive(c.id)}
-                    onBlur={() => setActive(null)}
-                    onClick={() => setActive((a) => (a === c.id ? null : c.id))}
-                    aria-pressed={active === c.id}
-                    className={`w-full rounded-2xl border px-4 py-3 text-left transition-all duration-300 ${
-                      active === c.id ? 'border-accent/40 bg-elevated-2' : 'border-line bg-elevated hover:border-line-strong'
-                    }`}
-                  >
-                    <span className="block font-medium">{c.country}</span>
-                    <span className="block text-[13px] text-ink-2">{c.city}</span>
-                  </button>
-                </li>
               ))}
-            </ul>
+            </div>
           </Reveal>
         </div>
 

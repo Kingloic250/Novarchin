@@ -4,10 +4,11 @@ import { VIEW_H, VIEW_W, cities, dotsPath, hub, project, routePath } from './afr
 
 const vb = { x: 0, y: 0, w: VIEW_W, h: VIEW_H }
 
-// Hand-placed label offsets so the tightly clustered East African cities never overlap.
+// Hand-placed label offsets so the tightly clustered cities never overlap.
 const TOP = 'translate(-50%, calc(-100% - 12px))'
 const BOTTOM = 'translate(-50%, 12px)'
 const LEFT = 'translate(calc(-100% - 12px), -50%)'
+const RIGHT = 'translate(12px, -50%)'
 const LABEL_TRANSFORM: Record<string, string> = {
   rw: LEFT,
   ug: 'translate(12px, -85%)', // right, nudged up clear of the Nairobi pin
@@ -17,11 +18,16 @@ const LABEL_TRANSFORM: Record<string, string> = {
   cd: LEFT,
   ss: TOP,
   so: TOP,
+  ng: RIGHT,
+  gh: LEFT,
+  eg: TOP,
+  ma: RIGHT,
+  za: RIGHT,
 }
 
 /**
  * Dotted Africa with Kigali as a glowing hub and light pulses travelling to
- * each East African city. `labels` adds city name tags (coverage section).
+ * each city across the continent. `labels` adds city name tags (coverage section).
  */
 export function AfricaMap({
   labels = false,

@@ -51,7 +51,7 @@ export function Hero() {
             className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line-strong bg-elevated/60 py-1.5 pl-2 pr-4 text-[13px] text-ink-2 backdrop-blur"
           >
             <span className="rounded-full bg-brand px-2.5 py-0.5 text-[12px] font-medium text-white">Kigali</span>
-            Engineering for East Africa &amp; beyond
+            Engineering across Africa
           </motion.p>
 
           <h1 className="headline text-[52px] sm:text-[72px] lg:text-[80px] xl:text-[96px]">
@@ -121,7 +121,7 @@ function HubCard() {
     >
       <p className="text-[12px] uppercase tracking-[0.08em] text-ink-3">Headquarters</p>
       <p className="mt-1 font-display text-[17px] font-semibold tracking-[-0.02em]">Kigali, Rwanda</p>
-      <p className="mt-0.5 text-[13px] text-ink-2">Serving clients across East Africa</p>
+      <p className="mt-0.5 text-[13px] text-ink-2">Serving clients across Africa</p>
     </motion.div>
   )
 }
