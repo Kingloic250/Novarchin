@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Check, Loader2, Mail, MapPin, Phone } from 'lucide-react'
 import { PageHero } from '../components/ui/PageHero'
 import { Reveal } from '../components/ui/Reveal'
-import { LinkedInIcon } from '../components/ui/Icon'
-import { contact, services } from '../content/site'
+import { LinkedInIcon, WhatsAppIcon } from '../components/ui/Icon'
+import { contact, services, whatsappUrl } from '../content/site'
 import { usePageTitle } from '../hooks/usePageTitle'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
@@ -158,6 +158,23 @@ export default function ContactPage() {
                   </div>
                 </div>
               ))}
+              {whatsappUrl && (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card group flex items-center gap-4 p-6 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-[#25D366]/40"
+                >
+                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#25D366]/15 text-[#25D366]">
+                    <WhatsAppIcon className="size-5" />
+                  </span>
+                  <span className="flex-1">
+                    <span className="block text-[13px] font-semibold text-ink-3">WhatsApp</span>
+                    <span className="mt-0.5 block text-[17px] font-medium">Chat with us on WhatsApp</span>
+                  </span>
+                  <span aria-hidden className="text-ink-3 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              )}
               {contact.linkedin && (
                 <a href={contact.linkedin} target="_blank" rel="noreferrer" className="card flex items-center gap-4 p-6 transition-transform hover:-translate-y-0.5">
                   <span className="grid size-11 place-items-center rounded-full bg-brand/15 text-accent">

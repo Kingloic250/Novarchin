@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Logo } from './Logo'
-import { company, contact, services } from '../../content/site'
+import { company, contact, services, whatsappUrl } from '../../content/site'
 import { LinkedInIcon } from '../ui/Icon'
 
 export function Footer() {
@@ -48,6 +48,13 @@ export function Footer() {
             {contact.phone && (
               <li>
                 <a className="transition-colors hover:text-ink" href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
+              </li>
+            )}
+            {whatsappUrl && (
+              <li>
+                <a className="transition-colors hover:text-ink" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  WhatsApp
+                </a>
               </li>
             )}
             {contact.address && <li>{contact.address}</li>}

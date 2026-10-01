@@ -27,10 +27,17 @@ export const ceo = {
 export const contact = {
   email: 'novarchin@gmail.com',
   phone: '+250 790 109 452',
+  /** International number, digits only (used for wa.me links). */
+  whatsapp: '250790109452',
   address: '', // TODO
   linkedin: '', // TODO
   website: '', // TODO
 }
+
+/** Opens a WhatsApp chat with a friendly pre-filled first message. */
+export const whatsappUrl = contact.whatsapp
+  ? `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent("Hello Novarchin, I'd like to talk about a project.")}`
+  : ''
 
 export type IconName =
   | 'code' | 'building' | 'smartphone' | 'sparkles' | 'wallet' | 'cloud' | 'plug' | 'pen' | 'shield' | 'compass'

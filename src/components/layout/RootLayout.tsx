@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import Lenis from 'lenis'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
+import { WhatsAppButton } from './WhatsAppButton'
 import { easeOut } from '../../lib/motion'
 
 let lenis: Lenis | null = null
@@ -63,6 +64,7 @@ export function RootLayout() {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <WhatsAppButton />
     </>
   )
 }
