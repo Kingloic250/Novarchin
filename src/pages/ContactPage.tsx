@@ -39,6 +39,13 @@ export default function ContactPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
+      if (res.status === 400) {
+        // The visitor can fix this themselves, so show the reason instead of falling back.
+        const { error } = (await res.json().catch(() => ({}))) as { error?: string }
+        setServerError(error || 'Please check the form and try again.')
+        setStatus('error')
+        return
+      }
       if (!res.ok) throw new Error(String(res.status))
       setStatus('sent')
       form.reset()
