@@ -101,7 +101,7 @@ export function Hero() {
           className="relative mx-auto w-full max-w-[440px] sm:max-w-[520px] lg:col-span-6 lg:max-w-none"
         >
           <motion.div style={{ x: px, y: py }}>
-            <AfricaMap className="w-full lg:ml-auto lg:w-[92%]" />
+            <AfricaMap flag className="w-full lg:ml-auto lg:w-[92%]" />
           </motion.div>
           <HubCard />
         </motion.div>

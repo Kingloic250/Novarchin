@@ -27,15 +27,18 @@ const LABEL_TRANSFORM: Record<string, string> = {
 
 /**
  * Dotted Africa with Kigali as a glowing hub and light pulses travelling to
- * each city across the continent. `labels` adds city name tags (coverage section).
+ * each city across the continent. `labels` adds city name tags (coverage section);
+ * `flag` plants a small Rwandan flag on the Kigali hub (hero).
  */
 export function AfricaMap({
   labels = false,
+  flag = false,
   active,
   onActivate,
   className = '',
 }: {
   labels?: boolean
+  flag?: boolean
   active?: string | null
   onActivate?: (id: string | null) => void
   className?: string
@@ -136,6 +139,8 @@ export function AfricaMap({
         <circle cx={hx} cy={hy} r={70 * scale} fill={`url(#hub-${uid})`} className="breathe" style={{ transformOrigin: `${hx}px ${hy}px` }} />
         <circle cx={hx} cy={hy} r={12 * scale} fill="none" stroke="var(--accent)" strokeWidth={1} vectorEffect="non-scaling-stroke" className="ping-ring" />
         <circle cx={hx} cy={hy} r={7 * scale} fill="var(--accent)" stroke="var(--bg)" strokeWidth={2} vectorEffect="non-scaling-stroke" />
+
+        {flag && <RwandaFlag x={hx} y={hy} uid={uid} reduce={!!reduce} />}
       </svg>
 
       {/* Crisp HTML labels; on phones only the hub and the active city show, to avoid crowding */}
@@ -161,5 +166,39 @@ export function AfricaMap({
           )
         })}
     </div>
+  )
+}
+
+/**
+ * Tiny Rwandan flag on a pole rising from the hub: blue / yellow / green bands
+ * with the golden sun. Kept small (~18×12 map units) so it never hides routes.
+ */
+function RwandaFlag({ x, y, uid, reduce }: { x: number; y: number; uid: string; reduce: boolean }) {
+  const top = y - 32
+  const fx = x + 0.6
+  const w = 18
+  const h = 12
+  return (
+    <motion.g
+      aria-hidden
+      initial={reduce ? false : { opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      style={{ filter: 'drop-shadow(0 1px 1.5px rgba(0,0,0,0.45))' }}
+    >
+      <clipPath id={`rw-${uid}`}>
+        <rect x={fx} y={top} width={w} height={h} rx={1.6} />
+      </clipPath>
+      <line x1={x} y1={y - 8} x2={x} y2={top - 1} stroke="var(--text-2)" strokeWidth={1.1} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+      <g clipPath={`url(#rw-${uid})`}>
+        <rect x={fx} y={top} width={w} height={h * 0.5} fill="#00A1DE" />
+        <rect x={fx} y={top + h * 0.5} width={w} height={h * 0.25} fill="#FAD201" />
+        <rect x={fx} y={top + h * 0.75} width={w} height={h * 0.25} fill="#20603D" />
+        {/* Sun: disc with a faint ray ring */}
+        <circle cx={fx + w * 0.8} cy={top + h * 0.24} r={1.9} fill="none" stroke="#FAD201" strokeWidth={0.7} strokeDasharray="0.6 0.55" />
+        <circle cx={fx + w * 0.8} cy={top + h * 0.24} r={1.15} fill="#FAD201" />
+      </g>
+      <rect x={fx} y={top} width={w} height={h} rx={1.6} fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth={0.5} vectorEffect="non-scaling-stroke" />
+    </motion.g>
   )
 }
